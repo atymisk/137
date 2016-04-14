@@ -13,6 +13,7 @@ and open the template in the editor.
     height: 100%;
     top: 0;
     left: 0;
+    display: none;
     background-color: #313131;
     opacity: 0.95;
     position:fixed;
@@ -54,7 +55,8 @@ form
     border-radius: 5px;
     background-color: white;
 }
-label {
+label.textinpt
+{
   display: inline-block;
   width: 90%;
   vertical-align: top;

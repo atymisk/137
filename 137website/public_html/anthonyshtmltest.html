@@ -22,46 +22,48 @@ and open the template in the editor.
                     <hr/>
                     <table>
                         <tr>
-                            <td><label for='name'>Name</label></td>
+                            <td><label for='name' class='textinpt'>Name</label></td>
                             <td>
-                                <input id="name" name="name" placeholder="Example: Peter Anteater" type="text" required/><br/>
+                                <input id="name" name="name" placeholder="Example: Peter Anteater" type="text" required><br/>
                             </td>
                         </tr>
                         <tr>
-                            <td><label for='email'>Email Address</label></td>
+                            <td><label for='email' class='textinpt'>Email Address</label></td>
                             <td>
                                 <input id="email" name="email" 
-                                       placeholder="Example: peteranteater@uci.edu" type="text" required/><br/>
+                                       placeholder="Example: peteranteater@uci.edu" type="text" required><br/>
                             </td>
                         </tr>
                     </table>
                     <table>
                         <tr>
-                            <td><label for='creditcard'>Credit Card Number</label></td>
+                            <td><label for='creditcard' class='textinpt'>Credit Card Number</label></td>
                             <td>
                                 <input id='creditcard' name='creditcard' 
                                     placeholder='Example: 1234 5678 1234 5678' type='text' required/>
                             </td>
-                            <td><input id='CVN' name='CVN' placeholder="CVN" type='text' style='width:35%;' required/></td>
+                            <td><input id='CSC' name='CSC' placeholder="CSC" type='text' style='width:35%;' required/></td>
                         </tr>
                     </table>
                     <table>
+                        <h3>Shipping Information</h3>
                         <tr>
-                            <td><label for='addr1'>Shipping Address Line 1</label></td>
+                            <td><label for='addr1' class='textinpt'>Shipping Address Line 1</label></td>
                             <td><input id='addr1' name='addr1' placeholder='Example: 123 Main St.' type='text' required/></td>
                         </tr>
                         <tr>
-                            <td><label for='addr2'>Shipping Address Line 2</label></td>
+                            <td><label for='addr2' class='textinpt'>Shipping Address Line 2</label></td>
                             <td><input id='addr2' name='addr2' placeholder='optional' type='text'/></td>
                         </tr>
                     </table>
                     <table>
                         <tr>
-                            <td><label for='city'>City</label></td>
+                            <td><label for='city' class='textinpt'>City</label></td>
                             <td><input id='city' name='city' placeholder='Example: Irvine' type='text' required/></td>
-                            <td><label for='state'>State</label></td>
+                            <td><label for='state' class='textinpt'>State</label></td>
                             <td>
                                 <select id='state' name='state' required>
+                                    <option value='' disabled selected>--</option>
                                     <option value='AL'>Al</option><option value='AK'>AK</option>
                                     <option value='AR'>AR</option><option value='AZ'>AZ</option><option value='CA'>CA</option>
                                     <option value='CO'>CO</option><option value='CT'>CT</option><option value='DE'>DE</option>
@@ -89,16 +91,38 @@ and open the template in the editor.
                             <td><input id='country' name='country' type='text' placeholder="ex: United States of America" required/></td>
                         </tr>
                     </table>
+                    <table>
+                        <h3>Shipping Options</h3>
+                        <tr>
+                            <td>
+                                <input type="radio" name="shipping" id='overnight' value="overnight">
+                                <label for='overnight'>Overnight Shipping</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="shipping" id='2days' value="2day">
+                            <label for='2days'>2 Day Shipping</label>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="shipping" id='1week' value="1 Week">
+                            <label for='1week'>1 week Shipping</label>
+                            </td>
+                            
+                        </tr>
+                    </table>
                     <hr>
                     <center>
                         <table>
                             <tr>
                                 <td><input type='submit' onclick='verifyinput()'/><br></td>
-                                <td><input type='button' id="closeform" value='Cancel Payment' onclick='div_hide()'/></td>
+                                <td><input type='button' id="closeform" value='Cancel Order' onclick='div_hide()'/></td>
                             </tr>
                         </table>
                     </center>
-                   
                 </form>
             </div>
         </div>
