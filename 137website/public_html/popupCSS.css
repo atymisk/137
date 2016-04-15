@@ -34,7 +34,7 @@ input
 }
 input[type=text] 
 {
-    width:92%;
+    width:90%;
     padding:6px;
     margin-bottom:20px;
     border:1px solid #ccc;
@@ -65,4 +65,11 @@ label.textinpt
 td
 {
     padding-left: 3px;
+}
+p.err
+{
+    font-size: 10pt;
+    margin-left: 10%;
+    vertical-align: text-top;
+    color: red;
 }
