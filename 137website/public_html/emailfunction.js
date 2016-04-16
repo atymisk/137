@@ -232,7 +232,6 @@ function verifyinput()
 
 function sendemail()
 {
-<<<<<<< HEAD
     var email = document.getElementById('email');
     /*var product = "insert product name here";
     var name = document.getElementById('name');
@@ -243,12 +242,15 @@ function sendemail()
                         +"\n"+"\n"
                         +"Thank you for shopping at 33 Bookstore!"*/;
     var subject = "Order Confirmation for "/*+product*/;
-=======
+/*
+ * DEFAULT EMAIL ENTRY 
+ */
+/*
     var email = document.getElementById('email').value;
     var yourMessage = "";
     var subject = "Order Confirmation";
 
->>>>>>> origin/master
+*/
     document.location.href = "mailto:"+email+"?subject="
         + encodeURIComponent(subject)
         + "&body=" + encodeURIComponent(yourMessage);
