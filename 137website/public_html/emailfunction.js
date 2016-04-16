@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+// illegalChar won't let us input names with spaces in between
 var illegalchar = /\W/;
 var validChar = /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/;
 var validnum = /^\d+$/;
@@ -31,6 +32,7 @@ function checkName()
     var namerr = document.getElementById('nameerr');
     if(name.length === 0)
         namerr.innerHTML = "*Name cannot be empty";
+    /* So this means name cannot contain whitespace?? */
     else if(illegalchar.test(name))
         namerr.innerHTML = "*Contains Invalid Characters";
     else
@@ -71,7 +73,7 @@ function checkCreditCard()
     else if(!validnum.test(cc))
         crediterr.innerHTML = '*Only Numbers allowed';
     else if(cc.length !== 16)
-        crediterr.innerHTML = '*Incomplete';
+        crediterr.innerHTML = '*Invalid Credit Card Number';
     else
     {
         validcc = true;
@@ -167,9 +169,9 @@ function checkZIP()
     if(zip ==='')
         addrerr.innerHTML = '*ZIP cannot be empty';
     else if(!validnum.test(zip))
-        addrerr.innerHTML = '*ZIP must contain numbers'
+        addrerr.innerHTML = '*ZIP must contain numbers';
     else if(zip.length !== 5)
-        addrerr.innerHTML = '*ZIP must be 5 numbers long'
+        addrerr.innerHTML = '*ZIP must be 5 numbers long';
     else
     {
         validzip = true;
@@ -232,25 +234,33 @@ function verifyinput()
 
 function sendemail()
 {
-    var email = document.getElementById('email');
-    /*var product = "insert product name here";
-    var name = document.getElementById('name');
-    var creditcardnum = document.getElementById('creditcardnum').substring(12);*/
-    var yourMessage = "Order"/*"Order for "+product
-                        +"\n Name: "+name
-                        +"\n Credit Card Number: xxxxxx"+creditcardnum
-                        +"\n"+"\n"
-                        +"Thank you for shopping at 33 Bookstore!"*/;
-    var subject = "Order Confirmation for "/*+product*/;
-/*
- * DEFAULT EMAIL ENTRY 
- */
-/*
     var email = document.getElementById('email').value;
-    var yourMessage = "";
-    var subject = "Order Confirmation";
-
-*/
+    var product = "insert product name here"; //PLACEHOLDER
+    var name = document.getElementById('name').value;
+    var addr1 = document.getElementById('addr1').value;
+    var addr2Input = document.getElementById('addr2').value;
+    var addr2 = addr2Input;
+    var city = document.getElementById('city').value;
+    var state = document.getElementById('state').value;
+    var zip = document.getElementById('zip').value;
+    
+    if(addr2Input === "")
+        addr2 = "";
+    
+    var creditcard = document.getElementById('creditcard').value.substring(12);
+    var yourMessage = "Order for "+product
+                        +"\n"
+                        +"\nShipped to:"
+                        +"\n" + name
+                        +"\n" + addr1
+                        + addr2
+                        +"\n" + city + ", " + state + " " + zip
+                        +"\n"
+                        +"\n Credit Card: xxxxxxxx"+creditcard
+                        +"\n"+"\n"
+                        +"Thank you for shopping at Antreaders Bookstore!";
+    var subject = "[Antreaders Bookstore] Order Confirmation for "+product;
+    
     document.location.href = "mailto:"+email+"?subject="
         + encodeURIComponent(subject)
         + "&body=" + encodeURIComponent(yourMessage);
