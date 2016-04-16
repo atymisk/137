@@ -22,46 +22,53 @@ and open the template in the editor.
                     <hr/>
                     <table>
                         <tr>
-                            <td><label for='name'>Name</label></td>
+                            <td><label for='name' class='textinpt'>Name</label></td>
                             <td>
-                                <input id="name" name="name" placeholder="Example: Peter Anteater" type="text" required/><br/>
+                                <input id="name" name="name" placeholder="Example: Peter Anteater" type="text" onblur='checkName()' required><br/>
                             </td>
+                            <td><p id='nameerr' class='err'></p></td>
                         </tr>
                         <tr>
-                            <td><label for='email'>Email Address</label></td>
+                            <td><label for='email' class='textinpt'>Email Address</label></td>
                             <td>
                                 <input id="email" name="email" 
-                                       placeholder="Example: peteranteater@uci.edu" type="text" required/><br/>
+                                       placeholder="Example: peteranteater@uci.edu" type="text" onblur='checkEmail()' required><br/>
                             </td>
+                            <td><p id='emailerr' class='err'></p></td>
                         </tr>
                     </table>
                     <table>
                         <tr>
-                            <td><label for='creditcard'>Credit Card Number</label></td>
+                            <td><label for='creditcard' class='textinpt'>Credit Card Number</label></td>
                             <td>
                                 <input id='creditcard' name='creditcard' 
-                                    placeholder='Example: 1234 5678 1234 5678' type='text' required/>
+                                    placeholder='Example: 1234 5678 1234 5678' type='text' onblur='checkCreditCard()' required/>
                             </td>
-                            <td><input id='CVN' name='CVN' placeholder="CVN" type='text' style='width:35%;' required/></td>
+                            <td><input id='CSC' name='CSC' placeholder="CSC" type='text' style='width:35%;' onblur='checkCSC()' required/></td>
                         </tr>
+                        <tr><td><p id='crediterr' class='err'></p></td></tr>
                     </table>
                     <table>
+                        <h3 style='margin-left: 4%;'>Shipping Information</h3>
                         <tr>
-                            <td><label for='addr1'>Shipping Address Line 1</label></td>
-                            <td><input id='addr1' name='addr1' placeholder='Example: 123 Main St.' type='text' required/></td>
+                            <td><label for='addr1' class='textinpt'>Shipping Address Line 1</label></td>
+                            <td><input id='addr1' name='addr1' placeholder='Example: 123 Main St.' type='text' onblur='checkShippingAddress1()' required/></td>
+                            <td><p id='shippingerr1' class='err'></p></td>
                         </tr>
                         <tr>
-                            <td><label for='addr2'>Shipping Address Line 2</label></td>
-                            <td><input id='addr2' name='addr2' placeholder='optional' type='text'/></td>
+                            <td><label for='addr2' class='textinpt'>Shipping Address Line 2</label></td>
+                            <td><input id='addr2' name='addr2' placeholder='optional' onblur='checkShippingAddress2()' type='text'/></td>
+                            <td><p id='shippingerr2' class='err'></p></td>
                         </tr>
                     </table>
-                    <table>
+                    <table style='margin-left: 3%;'>
                         <tr>
-                            <td><label for='city'>City</label></td>
-                            <td><input id='city' name='city' placeholder='Example: Irvine' type='text' required/></td>
-                            <td><label for='state'>State</label></td>
+                            <td><label for='city' class='textinpt'>City</label></td>
+                            <td><input id='city' name='city' placeholder='Example: Irvine' type='text' onblur='checkCity()' required/></td>
+                            <td><label for='state' class='textinpt'>State</label></td>
                             <td>
-                                <select id='state' name='state' required>
+                                <select id='state' name='state' onblur='checkState()' required>
+                                    <option value='' disabled selected>--</option>
                                     <option value='AL'>Al</option><option value='AK'>AK</option>
                                     <option value='AR'>AR</option><option value='AZ'>AZ</option><option value='CA'>CA</option>
                                     <option value='CO'>CO</option><option value='CT'>CT</option><option value='DE'>DE</option>
@@ -82,23 +89,49 @@ and open the template in the editor.
                                 </select>
                             </td>
                             <td><label for='zip'>ZIP</label></td>
-                            <td><input id='zip' name='zip' placeholder="ex: 12345" size='5' type='text' required/></td>
+                            <td><input id='zip' name='zip' placeholder="ex: 12345" size='5' type='text' onblur='checkZIP()' required/></td>
                         </tr>
+                    </table>
+                        <p id='addrerr' class='err'></p>
+                    <table style='margin-top: 0px;'>
                         <tr>
                             <td><label for='country'>Country</label></td>
-                            <td><input id='country' name='country' type='text' placeholder="ex: United States of America" required/></td>
+                            <td><input id='country' name='country' type='text' placeholder="ex: United States of America" onblur='checkCountry()' required/></td>
+                            <td><p id='countryerr' class='err'></p></td>
+                        </tr>
+                    </table>
+                    
+                    <h3 style='margin-left: 4%;'>Shipping Options</h3>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="radio" name="shipping" id='overnight' onblur='checkShippingOptions()' value="overnight">
+                                <label for='overnight'>Overnight Shipping</label>
+                            </td>
+                            <td><p  class='err'id='shipmethoderr'></p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="shipping" id='2days' onblur='checkShippingOptions()' value="2day">
+                            <label for='2days'>2 Day Shipping</label>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="shipping" id='1week' onblur='checkShippingOptions()' value="1 Week">
+                            <label for='1week'>1 week Shipping</label>
+                            </td>
+                            
                         </tr>
                     </table>
                     <hr>
                     <center>
-                        <table>
-                            <tr>
-                                <td><input type='submit' onclick='verifyinput()'/><br></td>
-                                <td><input type='button' id="closeform" value='Cancel Payment' onclick='div_hide()'/></td>
-                            </tr>
-                        </table>
+                        <ul>
+                            <li style='display:inline;'><input type='button' onclick='verifyinput()' value="Submit Payment"/></li>
+                            <li style='display:inline;'><input type='button' id="closeform" value='Cancel Order' onclick='div_hide()'/></li>
+                        </ul>    
                     </center>
-                   
                 </form>
             </div>
         </div>
