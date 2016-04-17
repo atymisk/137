@@ -62,7 +62,7 @@ label.textinpt
   vertical-align: top;
   text-align: right;
 }​
-td
+td.popup
 {
     padding-left: 3px;
 }

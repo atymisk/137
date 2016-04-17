@@ -6,7 +6,7 @@
 
 // illegalChar won't let us input names with spaces in between
 var illegalchar = /\W/;
-var validChar = /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/;
+var validChar = /^[A-Za-z0-9 ._]*[A-Za-z0-9][A-Za-z0-9 ._]*$/;
 var validnum = /^\d+$/;
 
 var validname = false;
@@ -26,6 +26,25 @@ var product;
 var quantity;
 var price;
 
+function div_show() 
+{
+    document.getElementById('mainpopup').style.display = "block";
+    document.body.style.overflow = 'hidden';
+    setProductInfo();
+}
+//Function to Hide Popup
+function div_hide()
+{
+    document.getElementById('mainpopup').style.display = "none";
+    document.body.style.overflow = 'scroll';
+}
+
+function setProductInfo()
+{
+    product = document.getElementById('productname').innerHTML;
+    price = document.getElementById('price').innerHTML;
+}
+
 function checkName()
 {
     var name = document.getElementById('name').value;
@@ -33,7 +52,7 @@ function checkName()
     if(name.length === 0)
         namerr.innerHTML = "*Name cannot be empty";
     /* So this means name cannot contain whitespace?? */
-    else if(illegalchar.test(name))
+    else if(!validChar.test(name))
         namerr.innerHTML = "*Contains Invalid Characters";
     else
     {
@@ -86,7 +105,7 @@ function checkCSC()
     var csc = document.getElementById('CSC').value;
     var crediterr = document.getElementById('crediterr');
     if(csc === '')
-        crediterr.innerHTML = '*Field cannot be empty';
+        crediterr.innerHTML = '*CSC cannot be empty';
     else if(!validnum.test(csc))
         crediterr.innerHTML = '*Only Numbers allowed';
     else if(csc.length !== 3)
@@ -185,7 +204,7 @@ function checkCountry()
     var countryerr = document.getElementById('countryerr');
     
     if(country === '')
-        countryerr.innerHTML = '*Cannot Be Empty'
+        countryerr.innerHTML = '*Cannot Be Empty';
     else if(!validChar.test(country))
         countryerr.innerHTML = '*Contains illegal characters';
     else
