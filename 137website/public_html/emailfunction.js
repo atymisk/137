@@ -254,7 +254,6 @@ function verifyinput()
 function sendemail()
 {
     var email = document.getElementById('email').value;
-    // var product = "insert product name here"; //PLACEHOLDER
     var name = document.getElementById('name').value;
     var addr1 = document.getElementById('addr1').value;
     var addr2Input = document.getElementById('addr2').value;

@@ -26,13 +26,27 @@ table{
     width:100%;
 }
 
-table, th, td{
+#title{
+    text-align: left;
+    
+}
+
+a:link{
+    text-decoration: none;
+}
+
+#menu, td, th{
     /* Debugging purposes */
     border: 1px solid black;
     
-    text-align: center;
+    text-align: left;
+    vertical-align: bottom;
     font-family: "Terbuchet MS", Helvetica, sans-serif;
     font-size: 1.1em;
+}
+
+#frontpagepic{
+    text-align: center;
 }
 
 
