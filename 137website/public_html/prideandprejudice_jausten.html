@@ -12,12 +12,18 @@ and open the template in the editor.
         
         <link rel="stylesheet" type="text/css" href="popupCSS.css">
         <link rel="stylesheet" type="text/css" href="productCSS.css">
-        
+        <link rel="stylesheet" type="text/css" href="styleCSS.css">
         <script type="text/javascript" src='emailfunction.js'></script>
     </head>
     <body>
-        <h1>Pride and Prejudice by Jane Austen</h1>
-        
+        <nav id="navbar">
+            <a href="index.html" id="title">Antreader Bookstore</a>
+            <a href="products.html" class="menu">Products</a>
+            <a href="about.html" class="menu">About</a>
+        </nav>
+        <h1 class='about'>Big Empty Files</h1><br>
+        <h1 class='about'>Pride and Prejudice by Jane Austen</h1>
+        <div class='about'>
         <img class="inlinepic" src="imgs/prideandprejudice_jausten_cover.jpg" alt="Pride and Prejudice cover"/>
         
         <h2>Year Published</h2>
@@ -48,7 +54,7 @@ and open the template in the editor.
         </p>
         
         <h2>Price</h2>
-        <p>$20.00</p>
+        <p>$20.00</p></div>
         <div style="display:none;" onload="setProductInfo()">
             <p id="productname">"Pride and Prejudice" by Jane Austen</p>
             <p id="price">$20.00</p>

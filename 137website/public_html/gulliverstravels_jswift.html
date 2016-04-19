@@ -12,12 +12,18 @@ and open the template in the editor.
         
         <link rel="stylesheet" type="text/css" href="popupCSS.css">
         <link rel="stylesheet" type="text/css" href="productCSS.css">
-        
+        <link rel="stylesheet" type="text/css" href="styleCSS.css">
         <script type="text/javascript" src='emailfunction.js'></script>
     </head>
     <body>
-        <h1>Gulliver's Travels by Jonathan Swift</h1>
-        
+        <nav id="navbar">
+            <a href="index.html" id="title">Antreader Bookstore</a>
+            <a href="products.html" class="menu">Products</a>
+            <a href="about.html" class="menu">About</a>
+        </nav>
+        <h1 class='about'>Big Empty Files</h1><br>
+        <h1 class='about'>Gulliver's Travels by Jonathan Swift</h1>
+        <div class='about'>
         <img class="inlinepic" src="imgs/gulliverstravels_jswift_cover.jpg" alt="Gulliver's Travels Cover"/>
         
         <h2>Year Published</h2>
@@ -38,7 +44,7 @@ and open the template in the editor.
         </p>
         
         <h2>Price</h2>
-        <p>$20.00</p>
+        <p>$20.00</p></div>
         <div style="display:none;" onload="setProductInfo()">
             <p id="productname">"Gulliver's Travels" by Jonathan Swift</p>
             <p id="price">$20.00</p>

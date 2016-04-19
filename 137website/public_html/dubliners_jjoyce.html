@@ -12,11 +12,18 @@ and open the template in the editor.
         
         <link rel="stylesheet" type="text/css" href="popupCSS.css">
         <link rel="stylesheet" type="text/css" href="productCSS.css">
-        
+        <link rel="stylesheet" type="text/css" href="styleCSS.css">
         <script type="text/javascript" src='emailfunction.js'></script>
     </head>
     <body>
-        <h1>Dubliners by James Joyce</h1>
+        <nav id="navbar">
+            <a href="index.html" id="title">Antreader Bookstore</a>
+            <a href="products.html" class="menu">Products</a>
+            <a href="about.html" class="menu">About</a>
+        </nav>
+        <h1 class='about'>Big Empty Files</h1><br>
+        <div class='about'>
+        <h1 class='about'>Dubliners by James Joyce</h1>
         
         <img class="inlinepic" src="imgs/dubliners_jjoyce_cover.jpg" alt="Dubliners cover"/>
         
@@ -44,6 +51,7 @@ and open the template in the editor.
         
         <h2>Price</h2>
         <p>$20.00</p>
+        </div>
         <div style="display:none;" onload="setProductInfo()">
             <p id="productname">"Dubliners" by James Joyce</p>
             <p id="price">$20.00</p>
