@@ -137,3 +137,14 @@ th.product_info
     height: 300px;
     width: 250px;
 }
+
+.about
+{
+    font-family: "Terbuchet MS", Helvetica, sans-serif;
+    color:white;
+}
+
+.textinf
+{
+    padding-left: 10px;
+}
