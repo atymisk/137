@@ -1,17 +1,13 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
 /* 
     Created on : Apr 17, 2016, 2:20:14 PM
-    Author     : Jessica
+    Author     : Jessica, Anthony, Leonard, Medhavi
 */
 
-/* CSS for the Antreaders Bookstore website front page */
+/* CSS for the Antreaders Bookstore website */
 
-body{
-    background-color: #F1F7DC;
+body
+{
+    background-color: #594166;
 }
 
 h1
@@ -29,11 +25,13 @@ h1
     font-size: 24px;
 }
 
-a:link{
+a:link
+{
     text-decoration: none;
 }
 
-.menu{
+.menu
+{
     /* Debugging purposes */
     
     text-align: center;
@@ -42,7 +40,8 @@ a:link{
     
 }
 
-.frontpagepic{
+.frontpagepic
+{
     position: absolute;
     top: 10%;
     left: 0;
@@ -90,4 +89,31 @@ a:link{
 {
     color: #FEFEFE;
     border: 1px #555555 solid;
+}
+
+#products
+{
+    position: absolute;
+    background-color: #352D3C;
+}
+
+th.product_info
+{
+    font-family: "Terbuchet MS", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.product_info
+{
+    font-family: "Terbuchet MS", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.product_info a.link
+{
+    /*font-family: "Terbuchet MS", Helvetica, sans-serif;*/
+    color: white;
+    /*text-align: center;*/
 }
