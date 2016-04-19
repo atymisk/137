@@ -91,10 +91,21 @@ a:link
     border: 1px #555555 solid;
 }
 
-#products
+
+#products_title
 {
     position: absolute;
-    background-color: #352D3C;
+    top: 10%;
+    color:#FEFEFE;
+    font-family: "Terbuchet MS", Helvetica, sans-serif;
+}
+
+#products
+{
+    width: 100%;
+    position: absolute;
+    top: 20%;
+    background-color: #594C63;
 }
 
 th.product_info
@@ -102,6 +113,7 @@ th.product_info
     font-family: "Terbuchet MS", Helvetica, sans-serif;
     color: white;
     text-align: center;
+    border-bottom: 1px solid #E0E0E0;
 }
 
 .product_info
@@ -109,11 +121,19 @@ th.product_info
     font-family: "Terbuchet MS", Helvetica, sans-serif;
     color: white;
     text-align: center;
+    border-bottom: 1px solid #E0E0E0;
 }
 
 .product_info a.link
 {
-    /*font-family: "Terbuchet MS", Helvetica, sans-serif;*/
+    font-family: "Terbuchet MS", Helvetica, sans-serif;
     color: white;
-    /*text-align: center;*/
+    text-align: center;
+    border-bottom: background;
+}
+
+.product_info img:hover 
+{
+    height: 300px;
+    width: 250px;
 }
