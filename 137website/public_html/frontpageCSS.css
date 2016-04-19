@@ -22,30 +22,32 @@ h1{
     margin: 10px;
 }
 
-table{
-    width:100%;
-}
-
 #title{
-    text-align: left;
+    /* Debugging purposes */
+    border: 1px solid black;
     
+    text-align: left;
+    vertical-align: bottom;
 }
 
 a:link{
     text-decoration: none;
 }
 
-#menu, td, th{
+.menu{
     /* Debugging purposes */
     border: 1px solid black;
     
-    text-align: left;
+    text-align: center;
     vertical-align: bottom;
     font-family: "Terbuchet MS", Helvetica, sans-serif;
     font-size: 1.1em;
+    padding: 1px;
 }
 
-#frontpagepic{
+.frontpagepic{
+    width: 100%;
+    background-color: #594166;
     text-align: center;
 }
 
