@@ -10,11 +10,14 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="stylesheet" type="text/css" href="popupCSS.css">
-        <script type="text/javascript" src='emailfunction.js'></script>
-        <script type="text/javascript" src='formpopupfunction.js'></script>
+        <link rel="stylesheet" type="text/css" href="CSS/popupCSS.css">
+        <script type="text/javascript" src='javascript/emailfunction.js'></script>
     </head>
-    <body style='overflow: hidden;'>
+    <body>
+        <div style="display:none;">
+            <p id="productname">"A Confederacy of Dunces" by John Kennedy Toole</p>
+            <p id="price">20</p>
+        </div>
         <div id='mainpopup'>
             <div id='popupform'>
                 <form id="form" method="post" name="form">
@@ -48,8 +51,8 @@ and open the template in the editor.
                         </tr>
                         <tr><td class="popup"><p id='crediterr' class='err'></p></td></tr>
                     </table>
+                    <h3 class="infoheader">Shipping Information</h3>
                     <table>
-                        <h3 style='margin-left: 4%;'>Shipping Information</h3>
                         <tr>
                             <td class="popup"><label for='addr1' class='textinpt'>Shipping Address Line 1</label></td>
                             <td class="popup"><input id='addr1' name='addr1' placeholder='Example: 123 Main St.' type='text' onblur='checkShippingAddress1()' required/></td>
@@ -67,9 +70,9 @@ and open the template in the editor.
                             <td class="popup"><input id='city' name='city' placeholder='Example: Irvine' type='text' onblur='checkCity()' required/></td>
                             <td class="popup"><label for='state' class='textinpt'>State</label></td>
                             <td class="popup">
-                                <select id='state' name='state' onblur='checkState()' required>
+                                <select id='state' name='state' onchange='checkState()' required>
                                     <option value='' disabled selected>--</option>
-                                    <option value='AL'>Al</option><option value='AK'>AK</option>
+                                    <option value='AL'>AL</option><option value='AK'>AK</option>
                                     <option value='AR'>AR</option><option value='AZ'>AZ</option><option value='CA'>CA</option>
                                     <option value='CO'>CO</option><option value='CT'>CT</option><option value='DE'>DE</option>
                                     <option value='FL'>FL</option><option value='GA'>GA</option><option value='HI'>HI</option>
@@ -101,28 +104,47 @@ and open the template in the editor.
                         </tr>
                     </table>
                     
-                    <h3 style='margin-left: 4%;'>Shipping Options</h3>
+                    <h3 class="infoheader">Shipping Options</h3>
                     <table>
+                        <tr><td class="popup"><p class='err' id='shipmethoderr'></p></td></tr>
                         <tr>
                             <td class="popup">
-                                <input type="radio" name="shipping" id='overnight' onblur='checkShippingOptions()' value="overnight">
+                                <input type="radio" name="shipping" id='overnight' onclick='checkShippingOptions()' value="overnight">
                                 <label for='overnight'>Overnight Shipping</label>
                             </td>
-                            <td class="popup"><p  class='err'id='shipmethoderr'></p></td>
                         </tr>
                         <tr>
                             <td class="popup">
-                                <input type="radio" name="shipping" id='2days' onblur='checkShippingOptions()' value="2day">
+                                <input type="radio" name="shipping" id='2days' onclick='checkShippingOptions()' value="2day">
                             <label for='2days'>2 Day Shipping</label>
                             </td>
-                            
                         </tr>
                         <tr>
                             <td class="popup">
-                                <input type="radio" name="shipping" id='1week' onblur='checkShippingOptions()' value="1 Week">
+                                <input type="radio" name="shipping" id='1week' onclick='checkShippingOptions()' value="1 Week">
                             <label for='1week'>1 week Shipping</label>
                             </td>
-                            
+                        </tr>
+                    </table>
+                    <hr>
+                    <h3 class="infoheader">Total Amount</h3>
+                    <table style="margin-left: 10%;">
+                        <tr>
+                            <td><i>Quantity: </i></td>
+                            <td><p class="money"><input id="quantity" type="number" 
+                                                        name="quantity" min="1" value="1" onchange="changeQuantity()"></p></td>
+                        </tr>
+                        <tr>
+                            <td><i>Sales Tax: </i></td>
+                            <td><p class="money" id="salestax">$0.00</p></td>
+                        </tr>
+                        <tr>
+                            <td><i>Shipping: </i></td>
+                            <td><p class="money" id="shipping">$0.00</p></td>
+                        </tr>
+                        <tr>
+                            <td><i>Total: </i></td>
+                            <td><p class="money" id="totalprice">$0.00</p></td>
                         </tr>
                     </table>
                     <hr>

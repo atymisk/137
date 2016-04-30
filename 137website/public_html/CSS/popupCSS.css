@@ -27,9 +27,9 @@ and open the template in the editor.
 }
 div#popupform
 {
-    position:absolute;
+    position: absolute;
     left: 50%;
-    top: 11%;
+    top: 18%;
     transform: translate(-50%, -10%);
     margin: auto;
 }
@@ -45,6 +45,16 @@ input[type=text]
     border:1px solid #ccc;
     font-size:14px;
 }
+input#quantity
+{
+    margin: 0;
+    margin-left: -10%;
+    width: 40%;
+    height:100%;
+    text-align: center;
+    padding-left: 3px;
+}
+
 select
 {
     padding:6px;
@@ -79,6 +89,11 @@ p.err
     color: red;
 }
 
+p.money
+{
+    margin-left: 50%;
+}
+
 button, input[type=button]
 {
     padding: 5px;
@@ -88,4 +103,14 @@ button, input[type=button]
     border-style: none;
     background-color: #DDDDDD;
     font-size: 12pt;
+}
+
+h3.infoheader
+{
+    margin-left: 4%;
+}
+
+tr.amtrow
+{
+    margin-bottom: 0%;
 }

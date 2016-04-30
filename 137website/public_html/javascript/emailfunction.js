@@ -23,14 +23,19 @@ var validship = false;
 
 var shippingmethod;
 var product;
-var quantity;
+
+var shipping = 0;
+var quantity = 1;
 var price;
+var salestax = 0;
+var appliedtax=0;
+var totalamt;
 
 function div_show() 
 {
+    setProductInfo();
     document.getElementById('mainpopup').style.display = "block";
     document.body.style.overflow = 'hidden';
-    setProductInfo();
 }
 //Function to Hide Popup
 function div_hide()
@@ -43,6 +48,36 @@ function setProductInfo()
 {
     product = document.getElementById('productname').innerHTML;
     price = document.getElementById('price').innerHTML;
+    changetotal();
+}
+
+function getSalesTaxByState()
+{
+    var state = document.getElementById('state').value;
+    console.log(state);
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function()
+    {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) 
+        {
+            salestax = xmlhttp.responseText;
+            console.log(salestax);
+            changeSalesTax();
+        }
+        else
+        {
+            console.log('Readystate: ' + xmlhttp.readyState + " | Status: " + xmlhttp.status);
+        }
+    };
+    xmlhttp.open("GET","PHP/SalesTax.php?q=" + state,true);
+    //xmlhttp.open("GET","http://andromeda-03.ics.uci.edu:19122/SalesTax.php?q=" + state,true);
+    xmlhttp.send();
+    
+}
+
+function getSalesTaxByZIP()
+{
+    
 }
 
 function checkName()
@@ -177,6 +212,7 @@ function checkState()
     {
         validstate=true;
         addrerr.innerHTML = '';
+        getSalesTaxByState();
     }
 }
 
@@ -231,6 +267,7 @@ function checkShippingOptions()
         shiperr.innerHTML = '*Please Select a Shipping Method';
     else
         shiperr.innerHTML = '';
+    changeShipping();
 }
 
 function verifyinput()
@@ -249,6 +286,49 @@ function verifyinput()
     if(validname && validemail && validcc && validcsc && validaddr1 && validcity 
             && validstate && validzip && validcountry && validship && validaddr2)
         sendemail();
+}
+
+function changetotal()
+{
+    totalamt = (quantity*price) + shipping + appliedtax;
+    document.getElementById("totalprice").innerHTML = "$"+totalamt;
+}
+
+function changeShipping()
+{
+    var ship;
+    if(shippingmethod==='overnight')
+    {
+        shipping = 20;
+        ship = "$20.00";
+    }
+    else if(shippingmethod==='2day')
+    {
+        shipping = 10;
+        ship = "$10.00";
+    }
+    else if(shippingmethod==='1 Week')
+    {
+        shipping = 4;
+        ship = "$4.00";
+    }
+    document.getElementById('shipping').innerHTML = ship;
+    changetotal();
+}
+
+function changeSalesTax()
+{
+    var amtadd = price * quantity * (Number(salestax)/100);
+    console.log(amtadd);
+    appliedtax = amtadd;
+    document.getElementById('salestax').innerHTML = '$'+appliedtax;
+    changetotal();
+}
+
+function changeQuantity()
+{
+    quantity = document.getElementById('quantity').value;
+    changeSalesTax();
 }
 
 function sendemail()
