@@ -51,17 +51,17 @@ function setProductInfo()
     changetotal();
 }
 
-function getSalesTaxByState()
+function getSalesTaxByZIP()
 {
-    var state = document.getElementById('state').value;
-    console.log(state);
+    var zip = document.getElementById('zip').value;
+    console.log(zip);
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function()
     {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) 
         {
             salestax = xmlhttp.responseText;
-            console.log(salestax);
+            console.log("Sales Tax is: " + salestax);
             changeSalesTax();
         }
         else
@@ -69,14 +69,8 @@ function getSalesTaxByState()
             console.log('Readystate: ' + xmlhttp.readyState + " | Status: " + xmlhttp.status);
         }
     };
-    xmlhttp.open("GET","PHP/SalesTax.php?q=" + state,true);
-    //xmlhttp.open("GET","http://andromeda-03.ics.uci.edu:19122/SalesTax.php?q=" + state,true);
+    xmlhttp.open("GET","PHP/SalesTax.php?q=" + zip,true);
     xmlhttp.send();
-    
-}
-
-function getSalesTaxByZIP()
-{
     
 }
 
@@ -212,7 +206,6 @@ function checkState()
     {
         validstate=true;
         addrerr.innerHTML = '';
-        getSalesTaxByState();
     }
 }
 
@@ -231,6 +224,7 @@ function checkZIP()
     {
         validzip = true;
         addrerr.innerHTML ='';
+        getSalesTaxByZIP();
     }
 }
 
@@ -318,7 +312,7 @@ function changeShipping()
 
 function changeSalesTax()
 {
-    var amtadd = price * quantity * (Number(salestax)/100);
+    var amtadd = price * quantity * Number(salestax);
     console.log(amtadd);
     appliedtax = amtadd;
     document.getElementById('salestax').innerHTML = '$'+appliedtax;
