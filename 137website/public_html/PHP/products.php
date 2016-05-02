@@ -2,20 +2,35 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="styleCSS.css">
-    
+    <link rel="stylesheet" type="text/css" href="CSS/styleCSS.css">
     <title>Products</title>
 </head>
 <body>
     
+    
     <nav id="navbar">
         <a href="index.html" id="title">Antreader Bookstore</a>
-        <a href="products.html" class="menu">Products</a>
+        <a href="PHP/products.php" class="menu">Products</a>
         <a href="about.html" class="menu">About</a>
     </nav>
 
     <h1 id="products_title">Products</h1>
+   
     
+
+<?php
+
+    ini_set('display_errors', 'on');
+    
+    require_once "PDODBinfo.php";
+    
+    $sql = "SELECT * FROM products"
+    
+    // $conn = null;
+
+?>
+    
+ <!--  
     <table id="products" align="center">
     <tr>
         <th class="product_info">Image</th>
@@ -106,6 +121,7 @@
         <td class="product_info">$20.00</td>
     </tr>
     </table>
-
+-->
 </body>
 </html>
+
