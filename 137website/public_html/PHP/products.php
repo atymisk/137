@@ -18,18 +18,48 @@
    
     
 
-<?php
+    <table id="products" align="center">
+        <tr>
+            <th class="product_info">Image</th>
+            <th class="product_info">Author(s)</th>
+            <th class="product_info">Book Title</th>
+            <th class="product_info">Genre</th>
+            <th class="product_info">Year</th>
+            <th class="product_info">Price</th>
+        </tr>
+        <?php
 
-    ini_set('display_errors', 'on');
-    
-    require_once "PDODBinfo.php";
-    
-    $sql = "SELECT * FROM products"
-    
-    // $conn = null;
+            ini_set('display_errors', 'on');
 
-?>
-    
+            require_once "PDODBinfo.php";
+
+            $sql = "SELECT * FROM products";
+
+            foreach($conn->query($sql) as $row)
+            {
+                echo '<tr>\n';
+                echo '<td height=300 width =250 align=center class="product_info"> <img src="';
+                echo $row['image_link'];
+                echo '" alt="Picture will be coming soon" height=200 width=150></td>\n';
+                
+                echo '<td class="product_info">'.$row['author'].'</td>\n';
+                
+                echo '<td class="product_info">';
+                echo '<a href="'.$row['product_link'].'" class="product_info">';
+                echo $row['title'].'</a></td>\n';
+                
+                echo '<td class="product_info">'.$row['genre'].'</td>\n';
+                
+                echo '<td class="product_info">'.$row['published_date'].'</td>\n';
+                
+                echo '<td class="product_info">$'.$row['price'].'</td>\n';
+                
+            }
+
+            $conn = null;
+
+        ?>
+        </table>
  <!--  
     <table id="products" align="center">
     <tr>
