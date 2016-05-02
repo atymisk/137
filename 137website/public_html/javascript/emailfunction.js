@@ -279,7 +279,8 @@ function verifyinput()
     checkShippingOptions();
     if(validname && validemail && validcc && validcsc && validaddr1 && validcity 
             && validstate && validzip && validcountry && validship && validaddr2)
-        sendemail();
+        //sendemail();
+        {}   
 }
 
 function changetotal()
