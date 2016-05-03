@@ -25,7 +25,7 @@
         <link rel="stylesheet" type="text/css" href="/CSS/popupCSS.css">
         <link rel="stylesheet" type="text/css" href="/CSS/productCSS.css">
         <link rel="stylesheet" type="text/css" href="/CSS/styleCSS.css">
-        <script type="text/javascript" src='emailfunction.js'></script>
+        <script type="text/javascript" src='/javascript/emailfunction.js'></script>
     </head>
     <body>
         
@@ -48,19 +48,15 @@
             echo "<p class='about'>".$row['synopsis']."</p>";
             echo "<h2 class='about'>Price</h2>";
             echo "<p class='about'>".$row['price']."</p>";
-            
-            echo '<div style="display:none;">';
-            echo '<p id="productname">"'.$row['title']." by ".$row['author']."</p>";
-            echo  '<p id="price">&#36;'.$row[price].'</p>';
-            
-            $conn=null;
-            
-        ?>
-
         
-        <div id='mainpopup'>
-            <div id='popupform'>
-                <form id="form" method="post" name="form">
+            echo "<div id='mainpopup'>";
+            echo "<div id='popupform'>";
+            echo '<form id="form" method="post" name="form">';
+            echo "<input type='hidden' name='products' id='products' value='".$row['title']." by " . $row['author']."'>";
+            echo "<input type='hidden' name='price' id='price' value='".$row['price']."'>";
+        
+        $conn=null;
+        ?>            
                     <h2 style='text-align:center;'>Payment Information</h2>
                     <hr/>
                     <table>
