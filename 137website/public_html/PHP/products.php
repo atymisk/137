@@ -45,7 +45,7 @@
                 echo '<td class="product_info">'.$row['author'].'</td>';
                 
                 echo '<td class="product_info">';
-                echo '<a href="'.$row['product_link'].'" class="product_info">';
+                echo '<a href="/PHP/one_product.php?title="'.$row['title'].'" class="product_info">';
                 echo $row['title'].'</a></td>';
                 
                 echo '<td class="product_info">'.$row['genre'].'</td>';
