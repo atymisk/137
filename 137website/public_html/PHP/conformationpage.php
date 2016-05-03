@@ -1,16 +1,10 @@
 <?php
-$servername = "sylvester-mccoy-v3.ics.uci.edu";
-$dbname = "inf124grp03";
-$username = "inf124grp03";
-$password = "S&Etah4G";
 
-try
-{
-    $conn = new PDO('mysql:host=sylvester-mccoy-v3.ics.uci.edu;dbname=inf124grp03',$username,$password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-    
-    $stmt = $pdo->query("SELECT name, email, address, shipping, products FROM customer");
+    ini_set('display_errors', 'on');
+
+    require_once "PDODBinfo.php";
+
+    $stmt = $conn->query("SELECT name, email, address, shipping, products FROM customer");
     echo '<table border="1">'."\n";
     while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
         echo "<tr><td>";
@@ -25,11 +19,6 @@ try
         echo($row['products']);
         echo("</td></tr>\n");
     }
-    echo "</table>\n";?>
+    echo "</table>\n";
         
-}
-catch(PDOException $e)
-{
-    echo "Error: " . $e->getMessage();
-}
 ?>
