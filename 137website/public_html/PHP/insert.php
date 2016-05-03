@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/CSS/styleCSS.css">
+    <title>Products</title>
+</head>
+<body>
+    
+    
+    <nav id="navbar">
+        <a href="/index.html" id="title">Antreader Bookstore</a>
+        <a href="/PHP/products.php" class="menu">Products</a>
+        <a href="/about.html" class="menu">About</a>
+    </nav>
+    
+    <h1 id="products_title">Confirmation Page</h1>
+
+
 <?php
 require_once "PDODBinfo.php";
 
@@ -28,27 +47,27 @@ if( isset($_POST['name'])
     echo "<h2 align=center>Thank you for shopping with us! Here's your order summary:\n</h2>";
     echo '<table align=center border="1">'."\n";
     //while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
-        echo "<tr><td>";
+        echo "<tr><td class='products_info'>";
         echo("Name");
-        echo("</td><td>");
+        echo("</td><td class='products_info'>");
         echo("Email");
-        echo("</td><td>");
+        echo("</td><td class='products_info'>");
         echo("Address");
-        echo("</td><td>");
+        echo("</td><td class='products_info'>");
         echo("Shipping");
-        echo("</td><td>");
+        echo("</td><td class='products_info'>");
         echo("Products");
         echo("</td></tr>\n");
     
-        echo "<tr><td>";
+        echo "<tr><td class='products_info'>";
         echo($_POST['name']);
-        echo("</td><td>");
+        echo("</td><td class='products_info'>");
         echo($_POST['email']);
-        echo("</td><td>");
+        echo("</td><td class='products_info'>");
         echo($_POST['address']);
-        echo("</td><td>");
+        echo("</td><td class='products_info'>");
         echo($_POST['shipping']);
-        echo("</td><td>");
+        echo("</td><td class='products_info'>");
         echo($_POST['products']);
         echo("</td></tr>\n");
     //}
@@ -58,3 +77,5 @@ if( isset($_POST['name'])
 }
 
 ?>
+</body>
+</html>
