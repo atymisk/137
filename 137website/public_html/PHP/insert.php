@@ -24,8 +24,22 @@ if( isset($_POST['name'])
     
     //confirmation page
     /*$stmt = $conn->query("SELECT name, email, address, shipping, products FROM customer");*/
-    echo '<table border="1">'."\n";
+    echo "<h1 align=center>Confirmation Page\n</h1>";
+    echo "<h2 align=center>Thank you for shopping with us! Here's your order summary:\n</h2>";
+    echo '<table align=center border="1">'."\n";
     //while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
+        echo "<tr><td>";
+        echo("Name");
+        echo("</td><td>");
+        echo("Email");
+        echo("</td><td>");
+        echo("Address");
+        echo("</td><td>");
+        echo("Shipping");
+        echo("</td><td>");
+        echo("Products");
+        echo("</td></tr>\n");
+    
         echo "<tr><td>";
         echo($_POST['name']);
         echo("</td><td>");
