@@ -44,10 +44,17 @@ function div_hide()
     document.body.style.overflow = 'scroll';
 }
 
+function getAddress()
+{
+    var addr = document.getElementById('addr1').value + " " + document.getElementById('city').value + " "
+    + document.getElementById('state').value + " " + document.getElementById('zip').value;
+    document.getElementById('address').value=addr;
+}
+
 function setProductInfo()
 {
-    product = document.getElementById('productname').innerHTML;
-    price = document.getElementById('price').innerHTML;
+    product = document.getElementById('products').value;
+    price = document.getElementById('price').value;
     changetotal();
 }
 
@@ -159,6 +166,7 @@ function checkShippingAddress1()
     {
         errship1.innerHTML = '';
         validaddr1 = true;
+        getAddress();
     }
 }
 
@@ -176,6 +184,7 @@ function checkShippingAddress2()
     {
         validaddr2 = true;
         errship2.innerHTML = '';
+        getAddress();
     }
 }
 
@@ -192,6 +201,7 @@ function checkCity()
     {
         validcity = true;
         cityerr.innerHTML = '';
+        getAddress();
     }
 }
 
@@ -206,6 +216,7 @@ function checkState()
     {
         validstate=true;
         addrerr.innerHTML = '';
+        getAddress();
     }
 }
 
@@ -225,6 +236,7 @@ function checkZIP()
         validzip = true;
         addrerr.innerHTML ='';
         getSalesTaxByZIP();
+        getAddress();
     }
 }
 

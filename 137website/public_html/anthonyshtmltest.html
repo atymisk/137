@@ -14,13 +14,11 @@ and open the template in the editor.
         <script type="text/javascript" src='javascript/emailfunction.js'></script>
     </head>
     <body>
-        <div style="display:none;">
-            <p id="productname">"A Confederacy of Dunces" by John Kennedy Toole</p>
-            <p id="price">20</p>
-        </div>
         <div id='mainpopup'>
             <div id='popupform'>
-                <form action="insert.php" id="form" method="post" name="form">
+                <form action="/PHP/insert.php" id="form" method="post" name="form">
+                    <input type="hidden" name='products' id='products' value='A Confederacy of Dunces by John Kennedy Toole'>
+                    <input type="hidden" name='price' id='price' value='20'>
                     <h2 style='text-align:center;'>Payment Information</h2>
                     <hr/>
                     <table>
@@ -94,6 +92,7 @@ and open the template in the editor.
                             <td class="popup"><label for='zip'>ZIP</label></td>
                             <td class="popup"><input id='zip' name='zip' placeholder="ex: 12345" size='5' type='text' onblur='checkZIP()' required/></td>
                         </tr>
+                        <tr><td><input type="hidden" name="address" id="address"></td></tr>
                     </table>
                         <p id='addrerr' class='err'></p>
                     <table style='margin-top: 0px;'>
@@ -150,7 +149,7 @@ and open the template in the editor.
                     <hr>
                     <center>
                         <ul>
-                            <li style='display:inline;'><input type='button' onclick='verifyinput()' value="Submit Payment"/></li>
+                            <li style='display:inline;'><input type='submit' onclick='verifyinput()' value="Submit Payment"/></li>
                             <li style='display:inline;'><input type='button' id="closeform" value='Cancel Order' onclick='div_hide()'/></li>
                         </ul>    
                     </center>
@@ -160,7 +159,7 @@ and open the template in the editor.
             
         <center>
             <div>This is Anthony's testing ground for various functions and features</div>
-            <input type='submit' id='popup' onclick='div_show()'>Buy Now!
+            <button type='button' id='popup' onclick='div_show()'>Buy Now!</button>
         </center>           
     </body>
 </html>

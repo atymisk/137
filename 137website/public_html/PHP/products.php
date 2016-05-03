@@ -2,16 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="CSS/styleCSS.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/styleCSS.css">
     <title>Products</title>
 </head>
 <body>
     
     
     <nav id="navbar">
-        <a href="index.html" id="title">Antreader Bookstore</a>
-        <a href="PHP/products.php" class="menu">Products</a>
-        <a href="about.html" class="menu">About</a>
+        <a href="/index.html" id="title">Antreader Bookstore</a>
+        <a href="/PHP/products.php" class="menu">Products</a>
+        <a href="/about.html" class="menu">About</a>
     </nav>
 
     <h1 id="products_title">Products</h1>
@@ -37,22 +37,22 @@
 
             foreach($conn->query($sql) as $row)
             {
-                echo '<tr>\n';
-                echo '<td height=300 width =250 align=center class="product_info"> <img src="';
+                echo '<tr>';
+                echo '<td height=300 width=250 align=center class="product_info"> <img src="';
                 echo $row['image_link'];
-                echo '" alt="Picture will be coming soon" height=200 width=150></td>\n';
+                echo '" alt="Picture will be coming soon" height=200 width=150></td>';
                 
-                echo '<td class="product_info">'.$row['author'].'</td>\n';
+                echo '<td class="product_info">'.$row['author'].'</td>';
                 
                 echo '<td class="product_info">';
                 echo '<a href="'.$row['product_link'].'" class="product_info">';
-                echo $row['title'].'</a></td>\n';
+                echo $row['title'].'</a></td>';
                 
-                echo '<td class="product_info">'.$row['genre'].'</td>\n';
+                echo '<td class="product_info">'.$row['genre'].'</td>';
                 
-                echo '<td class="product_info">'.$row['published_date'].'</td>\n';
+                echo '<td class="product_info">'.$row['published_date'].'</td>';
                 
-                echo '<td class="product_info">$'.$row['price'].'</td>\n';
+                echo '<td class="product_info">$'.$row['price'].'</td>';
                 
             }
 
