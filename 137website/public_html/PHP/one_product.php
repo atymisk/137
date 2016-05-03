@@ -10,7 +10,7 @@
 
             $title = $_GET['title'];
 
-            $sql = "SELECT * FROM products WHERE title=".$title;
+            $sql = "SELECT * FROM products WHERE title='".$title."'";
 
             $row = $conn->query($sql)->fetch();
             
@@ -28,11 +28,13 @@
         <script type="text/javascript" src='emailfunction.js'></script>
     </head>
     <body>
+        
         <nav id="navbar">
             <a href="/index.html" id="title">Antreader Bookstore</a>
             <a href="/PHP/products.php" class="menu">Products</a>
             <a href="/about.html" class="menu">About</a>
         </nav>
+        <h1 class='about'>Big Empty Files</h1><br>
 
         <?php
 
@@ -49,8 +51,10 @@
             
             echo '<div style="display:none;">';
             echo '<p id="productname">"'.$row['title']." by ".$row['author']."</p>";
-            echo  '<p id="price">$'.$row[price].'</p>';
-
+            echo  '<p id="price">&#36;'.$row[price].'</p>';
+            
+            $conn=null;
+            
         ?>
 
         
