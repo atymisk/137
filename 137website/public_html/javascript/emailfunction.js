@@ -76,7 +76,7 @@ function getSalesTaxByZIP()
             console.log('Readystate: ' + xmlhttp.readyState + " | Status: " + xmlhttp.status);
         }
     };
-    xmlhttp.open("GET","PHP/SalesTax.php?q=" + zip,true);
+    xmlhttp.open("GET","/PHP/SalesTax.php?q=" + zip,true);
     xmlhttp.send();
     
 }
@@ -291,8 +291,10 @@ function verifyinput()
     checkShippingOptions();
     if(validname && validemail && validcc && validcsc && validaddr1 && validcity 
             && validstate && validzip && validcountry && validship && validaddr2)
-        //sendemail();
-        {}   
+    {
+        return true;
+    }
+    return false;
 }
 
 function changetotal()

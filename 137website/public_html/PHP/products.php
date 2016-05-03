@@ -37,7 +37,7 @@
 
             foreach($conn->query($sql) as $row)
             {
-                echo '<tr>';
+                echo '<tr style="cursor:pointer" onclick="document.location.href=\'/PHP/one_product.php?title='.$row['title'].'\';">';
                 echo '<td height=300 width=250 align=center class="product_info"> <img src="';
                 echo $row['image_link'];
                 echo '" alt="Picture will be coming soon" height=200 width=150></td>';
@@ -52,7 +52,7 @@
                 
                 echo '<td class="product_info">'.$row['published_date'].'</td>';
                 
-                echo '<td class="product_info">$'.$row['price'].'</td>';
+                echo '<td class="product_info">$'.$row['price'].'</td></tr>';
                 
             }
 

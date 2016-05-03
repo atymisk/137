@@ -47,11 +47,11 @@
             echo "<h2 class='about'>Synopsis</h2>";
             echo "<p class='about'>".$row['synopsis']."</p>";
             echo "<h2 class='about'>Price</h2>";
-            echo "<p class='about'>".$row['price']."</p>";
+            echo "<p class='about'>$".$row['price']."</p>";
         
             echo "<div id='mainpopup'>";
             echo "<div id='popupform'>";
-            echo '<form id="form" method="post" name="form">';
+            echo '<form action="/PHP/insert.php" id="form" method="post" name="form" onsubmit="return verifyinput();">';
             echo "<input type='hidden' name='products' id='products' value='".$row['title']." by " . $row['author']."'>";
             echo "<input type='hidden' name='price' id='price' value='".$row['price']."'>";
         
@@ -130,6 +130,7 @@
                             <td class="popup"><label for='zip'>ZIP</label></td>
                             <td class="popup"><input id='zip' name='zip' placeholder="ex: 12345" size='5' type='text' onblur='checkZIP()' required/></td>
                         </tr>
+                        <tr><td><input type="hidden" name="address" id="address"></td></tr>
                     </table>
                         <p id='addrerr' class='err'></p>
                     <table style='margin-top: 0px;'>
@@ -164,9 +165,30 @@
                         </tr>
                     </table>
                     <hr>
+                    <h3 class="infoheader">Total Amount</h3>
+                    <table style="margin-left: 10%;">
+                        <tr>
+                            <td><i>Quantity: </i></td>
+                            <td><p class="money"><input id="quantity" type="number" 
+                                                        name="quantity" min="1" value="1" onchange="changeQuantity()"></p></td>
+                        </tr>
+                        <tr>
+                            <td><i>Sales Tax: </i></td>
+                            <td><p class="money" id="salestax">$0.00</p></td>
+                        </tr>
+                        <tr>
+                            <td><i>Shipping: </i></td>
+                            <td><p class="money" id="shipping">$0.00</p></td>
+                        </tr>
+                        <tr>
+                            <td><i>Total: </i></td>
+                            <td><p class="money" id="totalprice">$0.00</p></td>
+                        </tr>
+                    </table>
+                    <hr>
                     <center>
                         <ul>
-                            <li style='display:inline;'><input type='button' onclick='verifyinput()' value="Submit Payment"/></li>
+                            <li style='display:inline;'><input type='submit' onclick='verifyinput()' value="Submit Payment"/></li>
                             <li style='display:inline;'><input type='button' id="closeform" value='Cancel Order' onclick='div_hide()'/></li>
                         </ul>    
                     </center>
