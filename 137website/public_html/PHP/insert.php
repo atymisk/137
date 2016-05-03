@@ -22,7 +22,25 @@ if( isset($_POST['name'])
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);  
     
-    echo "ok";
+    //confirmation page
+    /*$stmt = $conn->query("SELECT name, email, address, shipping, products FROM customer");*/
+    echo '<table border="1">'."\n";
+    //while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
+        echo "<tr><td>";
+        echo($_POST['name']);
+        echo("</td><td>");
+        echo($_POST['email']);
+        echo("</td><td>");
+        echo($_POST['address']);
+        echo("</td><td>");
+        echo($_POST['shipping']);
+        echo("</td><td>");
+        echo($_POST['products']);
+        echo("</td></tr>\n");
+    //}
+    echo "</table>\n";
+    
+    //echo "ok";
 }
 
 ?>
