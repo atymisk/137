@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 17, 2016, 2:20:14 PM
+    Author     : Jessica
+*/
+
+/* CSS for the Antreaders Bookstore website front page */
+
+body{
+    background-color: #F1F7DC;
+}
+
+h1{
+    font-family: "Terbuchet MS", Helvetica, sans-serif;
+    color: #2E1943;
+    text-align: center;
+    
+    margin: 10px;
+}
+
+table{
+    width:100%;
+}
+
+table, th, td{
+    /* Debugging purposes */
+    border: 1px solid black;
+    
+    text-align: center;
+    font-family: "Terbuchet MS", Helvetica, sans-serif;
+    font-size: 1.1em;
+}
+
+

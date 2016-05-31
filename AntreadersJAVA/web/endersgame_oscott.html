@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ender's Game by Orson Scott Card</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" type="text/css" href="popupCSS.css">
+        <link rel="stylesheet" type="text/css" href="productCSS.css">
+        <link rel="stylesheet" type="text/css" href="styleCSS.css">
+        <script type="text/javascript" src='emailfunction.js'></script>
+    </head>
+    <body>
+        <nav id="navbar">
+            <a href="index.html" id="title">Antreader Bookstore</a>
+            <a href="products.html" class="menu">Products</a>
+            <a href="about.html" class="menu">About</a>
+        </nav>
+        <h1 class='about'>Big Empty Files</h1><br>
+        <div class='about'>
+        <h1 class='about'>Ender's Game by Orson Scott Card</h1>
+        
+        <div class="pictosize">
+        <img class="inlinepic" src="imgs/endersgame_oscott_cover.jpg" alt="Ender's Game cover"/>
+        
+        <h2>Year Published</h2>
+        <p>1985</p>
+        
+        <h2>Genre</h2>
+        <p>Science Fiction</p>
+        
+        <h2>Synopsis</h2>
+        <p>
+            In order to develop a secure defense against a hostile alien race's next attack, government 
+            agencies breed child geniuses and train them as soldiers. A brilliant young boy, Andrew "Ender" 
+            Wiggin lives with his kind but distant parents, his sadistic brother Peter, and the person he 
+            loves more than anyone else, his sister Valentine. Peter and Valentine were candidates for the 
+            soldier-training program but didn't make the cut--young Ender is the Wiggin drafted to the orbiting 
+            Battle School for rigorous military training.
+
+            Ender's skills make him a leader in school and respected in the Battle Room, where children play at 
+            mock battles in zero gravity. Yet growing up in an artificial community of young soldiers, Ender 
+            suffers greatly from isolation, rivalry from his peers, pressure from the adult teachers, and an 
+            unsettling fear of the alien invaders. His psychological battles include loneliness, fear that he 
+            is becoming like the cruel brother he remembers, and fanning the flames of devotion to his beloved 
+            sister. 
+
+            Is Ender the general Earth needs? But Ender is not the only result of the genetic experiments. The war
+            with the Buggers has been raging for a hundred years, and the quest for the perfect general has been 
+            underway for almost as long. Ender's two older siblings are every bit as unusual as he is, but in 
+            very different ways. Between the three of them lie the abilities to remake a world. If the world 
+            survives, that is.
+        </p>
+        </div>
+        
+        <h2>Price</h2>
+        <p>$20.00</p>
+        </div>
+        <div style="display:none;" onload="setProductInfo()">
+            <p id="productname">"Ender's Game" by Orson Scott Card</p>
+            <p id="price">$20.00</p>
+        </div>
+        <div id='mainpopup'>
+            <div id='popupform'>
+                <form id="form" method="post" name="form">
+                    <h2 style='text-align:center;'>Payment Information</h2>
+                    <hr/>
+                    <table>
+                        <tr>
+                            <td class="popup"><label for='name' class='textinpt'>Name</label></td>
+                            <td class="popup">
+                                <input id="name" name="name" placeholder="Example: Peter Anteater" type="text" onblur='checkName()' required><br/>
+                            </td>
+                            <td class="popup"><p id='nameerr' class='err'></p></td>
+                        </tr>
+                        <tr>
+                            <td class="popup"><label for='email' class='textinpt'>Email Address</label></td>
+                            <td class="popup">
+                                <input id="email" name="email" 
+                                       placeholder="Example: peteranteater@uci.edu" type="text" onblur='checkEmail()' required><br/>
+                            </td>
+                            <td class="popup"><p id='emailerr' class='err'></p></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td class="popup"><label for='creditcard' class='textinpt'>Credit Card Number</label></td>
+                            <td class="popup">
+                                <input id='creditcard' name='creditcard' 
+                                    placeholder='Example: 1234 5678 1234 5678' type='text' onblur='checkCreditCard()' required/>
+                            </td>
+                            <td class="popup"><input id='CSC' name='CSC' placeholder="CSC" type='text' style='width:35%;' onblur='checkCSC()' required/></td>
+                        </tr>
+                        <tr><td class="popup"><p id='crediterr' class='err'></p></td></tr>
+                    </table>
+                    <table>
+                        <h3 style='margin-left: 4%;'>Shipping Information</h3>
+                        <tr>
+                            <td class="popup"><label for='addr1' class='textinpt'>Shipping Address Line 1</label></td>
+                            <td class="popup"><input id='addr1' name='addr1' placeholder='Example: 123 Main St.' type='text' onblur='checkShippingAddress1()' required/></td>
+                            <td class="popup"><p id='shippingerr1' class='err'></p></td>
+                        </tr>
+                        <tr>
+                            <td class="popup"><label for='addr2' class='textinpt'>Shipping Address Line 2</label></td>
+                            <td class="popup"><input id='addr2' name='addr2' placeholder='optional' onblur='checkShippingAddress2()' type='text'/></td>
+                            <td class="popup"><p id='shippingerr2' class='err'></p></td>
+                        </tr>
+                    </table>
+                    <table style='margin-left: 3%;'>
+                        <tr>
+                            <td class="popup"><label for='city' class='textinpt'>City</label></td>
+                            <td class="popup"><input id='city' name='city' placeholder='Example: Irvine' type='text' onblur='checkCity()' required/></td>
+                            <td class="popup"><label for='state' class='textinpt'>State</label></td>
+                            <td class="popup">
+                                <select id='state' name='state' onblur='checkState()' required>
+                                    <option value='' disabled selected>--</option>
+                                    <option value='AL'>Al</option><option value='AK'>AK</option>
+                                    <option value='AR'>AR</option><option value='AZ'>AZ</option><option value='CA'>CA</option>
+                                    <option value='CO'>CO</option><option value='CT'>CT</option><option value='DE'>DE</option>
+                                    <option value='FL'>FL</option><option value='GA'>GA</option><option value='HI'>HI</option>
+                                    <option value='ID'>ID</option><option value='IL'>IL</option><option value='IN'>IN</option>
+                                    <option value='IA'>IA</option><option value='KS'>KS</option><option value='KY'>KY</option>
+                                    <option value='LA'>LA</option><option value='ME'>ME</option><option value='MD'>MD</option>
+                                    <option value='MA'>MA</option><option value='MI'>MI</option><option value='MN'>MN</option>
+                                    <option value='MS'>MS</option><option value='MO'>MO</option><option value='MT'>MT</option>
+                                    <option value='NE'>NE</option><option value='NV'>NV</option><option value='NH'>NH</option>
+                                    <option value='NJ'>NJ</option><option value='NM'>NM</option><option value='NY'>NY</option>
+                                    <option value='NC'>NC</option><option value='ND'>ND</option><option value='OH'>OH</option>
+                                    <option value='OK'>OK</option><option value='OR'>OR</option><option value='PA'>PA</option>
+                                    <option value='RI'>RI</option><option value='SC'>SC</option><option value='SD'>SD</option>
+                                    <option value='TN'>TN</option><option value='TX'>TX</option><option value='UT'>UT</option>
+                                    <option value='VT'>VT</option><option value='VA'>VA</option><option value='WA'>WA</option>
+                                    <option value='WV'>WV</option><option value='WI'>WI</option><option value='WY'>WY</option>
+                                </select>
+                            </td>
+                            <td class="popup"><label for='zip'>ZIP</label></td>
+                            <td class="popup"><input id='zip' name='zip' placeholder="ex: 12345" size='5' type='text' onblur='checkZIP()' required/></td>
+                        </tr>
+                    </table>
+                        <p id='addrerr' class='err'></p>
+                    <table style='margin-top: 0px;'>
+                        <tr>
+                            <td class="popup"><label for='country'>Country</label></td>
+                            <td class="popup"><input id='country' name='country' type='text' placeholder="ex: United States of America" onblur='checkCountry()' required/></td>
+                            <td class="popup"><p id='countryerr' class='err'></p></td>
+                        </tr>
+                    </table>
+                    
+                    <h3 style='margin-left: 4%;'>Shipping Options</h3>
+                    <table>
+                        <tr>
+                            <td class="popup">
+                                <input type="radio" name="shipping" id='overnight' onblur='checkShippingOptions()' value="overnight">
+                                <label for='overnight'>Overnight Shipping</label>
+                            </td>
+                            <td class="popup"><p  class='err'id='shipmethoderr'></p></td>
+                        </tr>
+                        <tr>
+                            <td class="popup">
+                                <input type="radio" name="shipping" id='2days' onblur='checkShippingOptions()' value="2day">
+                            <label for='2days'>2 Day Shipping</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup">
+                                <input type="radio" name="shipping" id='1week' onblur='checkShippingOptions()' value="1 Week">
+                            <label for='1week'>1 week Shipping</label>
+                            </td>
+                            
+                        </tr>
+                    </table>
+                    <hr>
+                    <center>
+                        <ul>
+                            <li style='display:inline;'><input type='button' onclick='verifyinput()' value="Submit Payment"/></li>
+                            <li style='display:inline;'><input type='button' id="closeform" value='Cancel Order' onclick='div_hide()'/></li>
+                        </ul>    
+                    </center>
+                </form>
+            </div>
+        </div>
+            
+        <center>
+            <button type='button' id='popup' onclick='div_show()'>Buy Now!</button>
+        </center>
+    </body>
+</html>

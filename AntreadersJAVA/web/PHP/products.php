@@ -9,9 +9,9 @@
     
     
     <nav id="navbar">
-        <a href="/index.html" id="title">Antreader Bookstore</a>
-        <a href="/PHP/products.php" class="menu">Products</a>
-        <a href="/about.html" class="menu">About</a>
+        <a href="/AntreadersJAVA/index.html" id="title">Antreader Bookstore</a>
+        <a href="/AntreadersJAVA/PHP/products.php" class="menu">Products</a>
+        <a href="/AntreadersJAVA/about.html" class="menu">About</a>
     </nav>
 
     <h1 id="products_title">Products</h1>
@@ -20,7 +20,7 @@
 
     <table id="products" align="center">
         <tr>
-            <td class="product_info">I  mage</td>
+            <td class="product_info">Image</td>
             <td class="product_info">Author(s)</td>
             <td class="product_info">Book Title</td>
             <td class="product_info">Genre</td>
@@ -37,7 +37,7 @@
 
             foreach($conn->query($sql) as $row)
             {
-                echo '<tr style="cursor:pointer" onclick="document.location.href=\'/PHP/one_product.php?title='.$row['title'].'\';">';
+                echo '<tr style="cursor:pointer" onclick="document.location.href=\'/Antreaders/PHP/one_product.php?title='.$row['title'].'\';">';
                 echo '<td height=300 width=250 align=center class="product_info"> <img src="';
                 echo $row['image_link'];
                 echo '" alt="Picture will be coming soon" height=200 width=150></td>';
@@ -45,7 +45,7 @@
                 echo '<td class="product_info">'.$row['author'].'</td>';
                 
                 echo '<td class="product_info">';
-                echo '<a href="/PHP/one_product.php?title='.$row['title'].'" class="product_info">';
+                echo '<a href="/AntreadersJAVA/PHP/one_product.php?title='.$row['title'].'" class="product_info">';
                 echo $row['title'].'</a></td>';
                 
                 echo '<td class="product_info">'.$row['genre'].'</td>';
