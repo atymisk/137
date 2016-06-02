@@ -71,21 +71,26 @@ public class ShoppingCart extends HttpServlet
             out.println("<html>");
             out.println("<head>");
             out.println("<link rel='stylesheet' type='text/css' href='CSS/styleCSS.css'>");
-            out.println("<script type='text/javascript'>function updateCart(){document.forms['uptqty'].submit();}</script>");
+            out.println("<script type='text/javascript' src='javascript/CartSiteHandler.js'></script>");
+//           out.println("<script type='text/javascript'>function updateCart(){document.forms['uptqty'].submit();}"
+//                    + "function checkCart()"
+//                    + "{var rows = document.getElementById('carttable').getElementsByTagName('tr').length;"
+//                    + "if(rows !== 0){document.getElementById('submitCheckout').disabled = false;}}"
+//                    + "</script>");
             out.println("<title>View Shopping Cart</title>");
             out.println("</head>");
-            out.println("<body>");
+            out.println("<body onload='checkCart()'>");
             out.println("<nav id='navbar'>");
             out.println("<a href='index.html' id='title'>Antreader Bookstore</a>\n" +
                         "<a href='PHP/products.php' class='menu'>Products</a>\n" +
                         "<a href='about.html' class='menu'>About</a></nav>");
             out.println("<h1>Shopping Cart</h1>");
             out.println("<hr>");
-            out.println("<form action='anthonyshtmltest.html'>Back to browsing<input type='submit' value='go'></form>");
+            out.println("<form action='anthonyshtmltest.html'><input type='submit' value='Back to browsing'></form>");
             out.println("<hr>");
             out.println("<h2>Shopping Cart</h2>");
             HashMap<String, CartItem> items = shoppingCart.getCartItems();
-            out.println("<table border='1px'>");
+            out.println("<table border='1px' id='carttable'>");
              
             for(CartItem key: items.values())
             {
@@ -102,10 +107,14 @@ public class ShoppingCart extends HttpServlet
                         + "<td>"
                         + "<input type='submit' value='delete'></td></form></tr>");
             }
-            out.println("</table><br>");
+            out.println("</table><br>"
+                    + "<form action='ShoppingCart' method='POST'>" 
+                    + "<input type='hidden' name='command' value='clear'>" 
+                    + "<input type='submit' value='Clear Cart'>" 
+                    + "</form>");
             out.println("<hr>");
-            out.println("<form action='ShoppingCart' method='POST'><input type='hidden' name='command' value='checkout'>"+
-                    "<input type='submit' value='Checkout'></form>");
+            out.println("<form action='ShoppingCart' method='POST'><input type='hidden' name='command' value='checkout'>"
+                    + "<input id='submitCheckout' type='submit' disabled value='Checkout'></form>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -113,19 +122,13 @@ public class ShoppingCart extends HttpServlet
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
-        /*
-        Adding to Cart
-        Deleting from Cart
-        Clear Cart
-        View Cart
-        */
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(true);
         Cart shoppingCart = (Cart) session.getAttribute(session.getId());
         if(shoppingCart == null)
         {
-          shoppingCart = new Cart();
-          session.setAttribute(session.getId(), shoppingCart);
+            shoppingCart = new Cart();
+            session.setAttribute(session.getId(), shoppingCart);
         }
         
         String command = request.getParameter("command");
@@ -148,7 +151,7 @@ public class ShoppingCart extends HttpServlet
                 break;
             case "checkout":
                 request.setAttribute("Cart", shoppingCart);
-                request.setAttribute("Session",session);
+                request.getSession().setAttribute("Session",session);
                 RequestDispatcher r = request.getRequestDispatcher("Checkout");
                 r.forward(request, response);
                 break;

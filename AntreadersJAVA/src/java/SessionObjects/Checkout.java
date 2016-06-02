@@ -47,11 +47,14 @@ public class Checkout extends HttpServlet
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<script type='text/javascript'>function updateCart(){document.forms['uptqty'].submit();}</script>");
+            out.println("<link rel='stylesheet' type='text/css' href='CSS/styleCSS.css'>");
+            out.println("<script type='text/javascript' src='javascript/CartSiteHandler.js'></script>");
+            out.println("<script type='text/javascript' src='javascript/emailfunction.js'></script>");
             out.println("<title>Checkout</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Checkout</h1>");
+            out.println("<form action='anthonyshtmltest.html'><input type='submit' value='Continue browsing'></form>");
             out.println("<hr>");
             out.println("<h1>Review Items</h1>");
             out.println("<table border='1px'>");
@@ -73,18 +76,38 @@ public class Checkout extends HttpServlet
                 total+=key.getTotalPrice();
             }
             out.println("<p>Total Amount: $"+total+"</p>");
+            
+            out.println("<form action='Checkout' method='POST'>");
+            out.println("<input type='hidden' name='command' value='buy'>");
+            out.println("<input type='hidden' id='totalamt' name='totalamt' value='"+total+"'>");
+            out.println("<input type='submit' disabled>");
+            out.println("</form>");
+            
             out.println("</table><br>");
             out.println("</body>");
             out.println("</html>");
         }
     }
     
+    private void confirmpurchase(HttpServletRequest request, HttpServletResponse response, Cart shoppingCart) 
+            throws ServletException, IOException 
+    {
+        //validate the fields via js: disabled submit
+        //access db
+        //write to db about products purchsed
+        //get order ID
+        //empty the cart
+        //destroy session object
+        //redirect to jsp with order ID
+    }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = (HttpSession)request.getAttribute("Session");
-        Cart shoppingCart = (Cart)request.getAttribute("Cart");
+        HttpSession session = (HttpSession)request.getSession().getAttribute("Session");
+        //Cart shoppingCart = (Cart)request.getAttribute("Cart");
+        Cart shoppingCart = (Cart) session.getAttribute(session.getId());
         
         String command = request.getParameter("command");
         switch(command)
@@ -98,6 +121,14 @@ public class Checkout extends HttpServlet
             case "view":
                 viewCart(request, response, shoppingCart);
                 break;
+            case "buy":
+                
+                break;
+            /*
+                Input fields
+                form validation
+                
+            */
             default:
                 viewCart(request, response, shoppingCart);
                 break;
