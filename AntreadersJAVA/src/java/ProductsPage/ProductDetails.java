@@ -97,6 +97,11 @@ public class ProductDetails extends HttpServlet {
                     out.println("p class='about'>" + rs.getString("synopsis") + "</p>");
                     out.println("<h2 class='about'>Price</h2>");
                     out.println("p class='about'>" + rs.getString("price") + "</p>");
+                    
+                    
+                    //Add to Cart button
+                    //TO DO: Add the correct link ****************************
+                    out.println("<A HREF=\"mycart?id=" + book_id + "\" style=\"position:relative;font-size:26px;height:40px;background-color:green;border-radius: 20px;margin-left:0px;margin-top:0px;\">" + "ADD TO CART" + "</A>");
                                 
                                 
                 }
