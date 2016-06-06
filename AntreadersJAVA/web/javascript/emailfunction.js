@@ -29,7 +29,7 @@ var quantity = 1;
 var price;
 var salestax = 0;
 var appliedtax=0;
-var totalamt;
+var totalamt = 0;
 
 function div_show() 
 {
@@ -95,6 +95,7 @@ function checkName()
         namerr.innerHTML = '';
         validname=true;
     }
+    verifyinput();
 }
 
 function checkEmail()
@@ -116,6 +117,7 @@ function checkEmail()
         validemail=true;
         emailerr.innerHTML = '';
     }
+    verifyinput();
 }
 
 function checkCreditCard()
@@ -134,6 +136,7 @@ function checkCreditCard()
         validcc = true;
         crediterr.innerHTML = '';
     }
+    verifyinput();
 }
 
 function checkCSC()
@@ -151,6 +154,7 @@ function checkCSC()
         validcsc = true;
         crediterr.innerHTML = '';
     }
+    verifyinput();
 }
 
 function checkShippingAddress1()
@@ -168,6 +172,7 @@ function checkShippingAddress1()
         validaddr1 = true;
         getAddress();
     }
+    verifyinput();
 }
 
 function checkShippingAddress2()
@@ -186,6 +191,7 @@ function checkShippingAddress2()
         errship2.innerHTML = '';
         getAddress();
     }
+    verifyinput();
 }
 
 function checkCity()
@@ -203,6 +209,7 @@ function checkCity()
         cityerr.innerHTML = '';
         getAddress();
     }
+    verifyinput();
 }
 
 function checkState()
@@ -218,6 +225,7 @@ function checkState()
         addrerr.innerHTML = '';
         getAddress();
     }
+    verifyinput();
 }
 
 function checkZIP()
@@ -235,9 +243,9 @@ function checkZIP()
     {
         validzip = true;
         addrerr.innerHTML ='';
-        getSalesTaxByZIP();
         getAddress();
     }
+    verifyinput();
 }
 
 function checkCountry()
@@ -254,6 +262,7 @@ function checkCountry()
         validcountry = true;
         countryerr.innerHTML = '';
     }
+    verifyinput();
 }
 
 function checkShippingOptions()
@@ -274,33 +283,34 @@ function checkShippingOptions()
     else
         shiperr.innerHTML = '';
     changeShipping();
+    verifyinput();
 }
 
 function verifyinput()
-{       
-    checkName();
-    checkEmail();
-    checkCreditCard();
-    checkCSC();
-    checkShippingAddress1();
-    checkShippingAddress2();
-    checkCity();
-    checkState();
-    checkZIP();
-    checkCountry();
-    checkShippingOptions();
+{
+    console.log("name "+validname);
+    console.log("email "+validemail);
+    console.log("cc "+validcc);
+    console.log("csc "+validcsc);
+    console.log("addr1 "+validaddr1);
+    console.log("addr2"+validaddr2);
+    console.log("city "+validcity);
+    console.log("state "+validstate);
+    console.log("zip "+validzip);
+    console.log("country "+validcountry);
+    console.log("valid "+validship+"\n");
     if(validname && validemail && validcc && validcsc && validaddr1 && validcity 
             && validstate && validzip && validcountry && validship && validaddr2)
     {
-        return true;
+        document.getElementById('submitpurchase').disabled = false;
     }
-    return false;
 }
 
 function changetotal()
 {
-    totalamt = (quantity*price) + shipping + appliedtax;
-    document.getElementById("totalprice").innerHTML = "$"+totalamt;
+    totalamt = parseInt(document.getElementById('totalamt').value) + shipping;
+    document.getElementById("totalamt").value = totalamt;
+    document.getElementById('totalprice').innerHTML = "$"+totalamt;
 }
 
 function changeShipping()

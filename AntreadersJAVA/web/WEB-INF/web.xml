@@ -9,8 +9,8 @@
         <servlet-class>ProductsPage.ProductsPageServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>IndividualProductsServlet</servlet-name>
-        <servlet-class>IndividualProducts.IndividualProductsServlet</servlet-class>
+        <servlet-name>ProductDetails</servlet-name>
+        <servlet-class>ProductsPage.ProductDetails</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ShoppingCart</servlet-name>
@@ -21,8 +21,8 @@
         <url-pattern>/ProductsPageServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>IndividualProductsServlet</servlet-name>
-        <url-pattern>/IndividualProductsServlet</url-pattern>
+        <servlet-name>ProductDetails</servlet-name>
+        <url-pattern>/ProductDetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

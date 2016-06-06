@@ -39,7 +39,14 @@ public class Checkout extends HttpServlet
         Integer qty = Integer.parseInt(request.getParameter("qty"));
         shoppingCart.updateCart(name, qty);
         session.setAttribute(session.getId(), shoppingCart);
-        viewCart(request, response, shoppingCart);
+        
+        if(!shoppingCart.getCartItems().isEmpty())
+        {viewCart(request, response, shoppingCart);}
+        else
+        {
+            RequestDispatcher r = request.getRequestDispatcher("anthonyshtmltest.html");
+            r.forward(request,response);
+        }
     }
     private void viewCart(HttpServletRequest request, HttpServletResponse response, Cart shoppingCart) 
             throws ServletException, IOException 
@@ -52,6 +59,7 @@ public class Checkout extends HttpServlet
             out.println("<html>");
             out.println("<head>");
             out.println("<link rel='stylesheet' type='text/css' href='CSS/styleCSS.css'>");
+            out.println("<link rel='stylesheet' type='text/css' href='CSS/popupCSS.css'>");
             out.println("<script type='text/javascript' src='javascript/CartSiteHandler.js'></script>");
             out.println("<script type='text/javascript' src='javascript/emailfunction.js'></script>");
             out.println("<title>Checkout</title>");            
@@ -79,11 +87,11 @@ public class Checkout extends HttpServlet
                         + "<input type='submit' value='delete'></td></form></tr>");
                 total+=key.getTotalPrice();
             }
-            out.println("<p id='displaytotal'>Total Amount Before Shipping: $"+total+"</p>");
             
             out.println("<form id='confirmpurchase' action='Checkout' method='POST'>");
             out.println("<input type='hidden' name='command' value='buy'>");
             out.println("<input type='hidden' id='totalamt' name='totalamt' value='"+total+"'>");
+            out.println("<p>Total Amount Before Shipping: $"+total+"</p>");
             out.println("<table>" 
                     +"<tr><td class='popup'><label for='name' class='textinpt'>Name</label></td>" 
                     + "<td class='popup'>" 
@@ -103,7 +111,7 @@ public class Checkout extends HttpServlet
                     + "<tr><td class='popup'><p id='crediterr' class='err'></p></td></tr></table>" 
                     
                     + "<h3 class='infoheader'>Shipping Information</h3>" 
-                    + "table><tr>" 
+                    + "<table><tr>" 
                     + "<td class='popup'><label for='addr1' class='textinpt'>Shipping Address Line 1</label></td>" 
                     + "<td class='popup'><input id='addr1' name='addr1' placeholder='Example: 123 Main St.' type='text' onblur='checkShippingAddress1()' required/></td>" 
                     + "<td class='popup'><p id='shippingerr1' class='err'></p></td></tr>" 
@@ -165,7 +173,15 @@ public class Checkout extends HttpServlet
                     + "<tr><td class='popup'>"
                     + "<input type='radio' name='shipping' id='1week' onclick='checkShippingOptions()' value='1 Week'>"
                     + "<label for='1week'>1 week Shipping</label></td>"
-                    + "</tr></table>");
+                    + "</tr></table>"
+                    
+                    + "<h3 class='infoheader'>Total Amount</h3>" 
+                    + "<table style='margin-left: 10%;'>" 
+                    + "<tr><td><i>Sales Tax: </i></td>" 
+                    + "<td><p class='money' id='salestax'>$0</p></td></tr>" 
+                    + "<tr><td><i>Shipping: </i></td>" 
+                    + "<td><p class='money' id='shipping'>$0</p></td></tr>" 
+                    + "<tr><td><i>Total: </i></td><td><p class='money' id='totalprice'>$"+total+"</p></td></tr></table>");
             
             out.println("<input type='submit' id='submitpurchase' value='Confirm Purchase' disabled>");
             out.println("</form>");
@@ -198,7 +214,7 @@ public class Checkout extends HttpServlet
                     UserDetails.PASSWORD);
 
                 //SQL query command
-                String SQL = "INSERT INTO orders (name, email, creditcard, address, shipping) VALUES (?,?,?,?,?)";
+                String SQL = "INSERT INTO orders (name, email, creditcard, address, shipping, paid) VALUES (?,?,?,?,?,?)";
                 PreparedStatement stmt = con.prepareStatement(SQL,Statement.RETURN_GENERATED_KEYS);
 
                 stmt.setString(1, request.getParameter("name"));
@@ -206,6 +222,7 @@ public class Checkout extends HttpServlet
                 stmt.setString(3, request.getParameter("creditcard"));
                 stmt.setString(4, request.getParameter("address"));
                 stmt.setString(5, request.getParameter("shipping"));
+                stmt.setInt(6, Integer.parseInt(request.getParameter("totalamt")));
 
                 stmt.execute();
                 ResultSet rs = stmt.getGeneratedKeys();
@@ -234,7 +251,7 @@ public class Checkout extends HttpServlet
             }
             catch(SQLException e)
             {
-                out.println(e.getMessage());
+                out.println("SQL: "+e.getMessage());
             }
             catch(ClassNotFoundException e)
             {

@@ -5,18 +5,13 @@
  */
 
 
-function addtocart()
+function updateCart()
 {
-    
+    document.forms['uptqty'].submit();
 }
 
-function cleartcart()
+function checkCart()
 {
-    
+    var rows = document.getElementById('carttable').getElementsByTagName('tr').length;
+    if(rows !== 0){document.getElementById('submitCheckout').disabled = false;}
 }
-
-function deletefromcart()
-{
-    
-}
-

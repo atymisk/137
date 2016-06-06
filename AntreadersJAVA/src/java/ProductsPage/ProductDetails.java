@@ -87,7 +87,7 @@ public class ProductDetails extends HttpServlet {
                 {
                     out.println("<h1 class='about'>" + rs.getString("title") + " by " + rs.getString("author") + "</h1>");
                     
-                    out.println('<img class="inlinepic" src="' + rs.getString("image_link") + '" alt="' + rs.getString("title") + ' cover"/>');
+                    out.println("<img class='inlinepic' src='" + rs.getString("image_link") + "' alt='" + rs.getString("title") + " cover'/>");
                     
                     out.println("<h2 class='about'>Year Published</h2>");
                     out.println("<p class='about'>" + rs.getString("published_date") + "</p>");
