@@ -114,16 +114,20 @@ public class ProductDetails extends HttpServlet {
                             + "<input type='submit' value='View Cart'></form>");
                                 
                 }
-                if(getServletContext().getAttribute("access_count") == null) 
+                int accessCount = (int) getServletContext().getAttribute("currentview");
+                if(getServletContext().getAttribute("currentview") == null) 
                 {
-                    getServletContext().setAttribute("access_count", 0);
+                    getServletContext().setAttribute("currentview", 1);
+                    accessCount = (int) getServletContext().getAttribute("currentview");
                 }
-                int accessCount = (int) getServletContext().getAttribute("access_count");
-                accessCount++;
-                getServletContext().setAttribute("access_count", accessCount);
-
+                else
+                {
+                    accessCount++;
+                    getServletContext().setAttribute("currentview", accessCount);
+                }
                 
                 out.println("</table><br>");
+                out.println("<p>"+accessCount+" customers are viewing this product!</p>");
                 out.println("");
                 
                 // out.println("Access Count:" + accessCount);
@@ -139,6 +143,24 @@ public class ProductDetails extends HttpServlet {
                 processRequest(request, response);
             }
         }
+    }
+    @Override
+    public void destroy()
+    {
+        if(getServletContext().getAttribute("currentview") == null) 
+        {
+            getServletContext().setAttribute("currentview", 0);
+        }
+        else
+        {
+            int i = (int)getServletContext().getAttribute("currentview");
+            if(i!=0)
+            {
+                i--;
+                getServletContext().setAttribute("currentview", i);
+            }
+        }
+        super.destroy();
     }
 
    

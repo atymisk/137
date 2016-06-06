@@ -84,7 +84,7 @@ public class ShoppingCart extends HttpServlet
             out.println("<body onload='checkCart()'>");
             out.println("<nav id='navbar'>");
             out.println("<a href='index.html' id='title'>Antreader Bookstore</a>\n" +
-                        "<a href='ProductPageServlet' class='menu'>Products</a>\n" +
+                        "<a href='ProductsPageServlet' class='menu'>Products</a>\n" +
                         "<a href='about.html' class='menu'>About</a></nav>");
             out.println("<h1>Shopping Cart</h1>");
             out.println("<hr>");
