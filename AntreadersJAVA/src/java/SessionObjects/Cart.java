@@ -18,11 +18,11 @@ public class Cart
     {
         cartItems = new HashMap<>();
     }
-    public HashMap getCartItems()
+    public HashMap<String,CartItem> getCartItems()
     {
         return cartItems;
     }
-    public void addToCart(String itemId, int price, int quantity)
+    public void addToCart(int PID, String itemId, int price, int quantity)
     {
         if(cartItems.containsKey(itemId))
         {
@@ -30,7 +30,7 @@ public class Cart
         }
         else
         {
-            cartItems.put(itemId, new CartItem(itemId, price, quantity));
+            cartItems.put(itemId, new CartItem(PID, itemId, price, quantity));
         }
     }
     

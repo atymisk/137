@@ -25,11 +25,12 @@ public class ShoppingCart extends HttpServlet
     private void addItem(HttpServletRequest request, HttpServletResponse response, HttpSession session, Cart shoppingCart) 
             throws ServletException, IOException
     {
+        Integer PID = Integer.parseInt(request.getParameter("PID"));
         String name = request.getParameter("name");
         Integer price = Integer.parseInt(request.getParameter("price"));
         Integer quantity = Integer.parseInt(request.getParameter("quantity"));
         
-        shoppingCart.addToCart(name, price, quantity);
+        shoppingCart.addToCart(PID, name, price, quantity);
         session.setAttribute(session.getId(), shoppingCart);
         response.sendRedirect("anthonyshtmltest.html");
     }

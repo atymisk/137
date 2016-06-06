@@ -11,17 +11,24 @@ package SessionObjects;
  */
 public class CartItem 
 {
+    private Integer PID;// retrieve from DB
     private String productname;
     private Integer price;
     private Integer quantity;
     private Integer totalprice;
     
-    public CartItem(String s, Integer i, Integer i2)
+    public CartItem(Integer id,String s, Integer i, Integer i2)
     {
+        PID = id;
         productname = s;
         price = i;
         quantity = i2;
         totalprice = price * quantity;
+    }
+    
+    public Integer getPID()
+    {
+        return PID;
     }
     
     public String getName()

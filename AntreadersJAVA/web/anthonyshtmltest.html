@@ -27,26 +27,28 @@ and open the template in the editor.
                 <th>Quantity</th>
                 <th>Add to Cart</th>
                 <tr>
-                    <td>Book 1</td>
+                    <td>The Grapes of Wrath</td>
                     <td>$20</td>
                     <td><input type="number" name="quantity" min="1" value="1"></td>
                     <td>
                         <input type="hidden" name="command" value="add">
-                        <input type="hidden" name="name" value="Book 1">
+                        <input type="hidden" name="name" value="The Grapes of Wrath">
                         <input type="hidden" name="price" value="20">
+                        <input type="hidden" name="PID" value="1">
                         <input type="submit" value="Add to cart">
                     </td>
                 </tr>
             </form>
             <form action="ShoppingCart" method="POST">
                 <tr>
-                    <td>Book 2</td>
+                    <td>Dracula</td>
                     <td>$24</td>
                     <td><input type="number" name="quantity" min="1" value="1"></td>
                     <td>
                         <input type="hidden" name="command" value="add">
-                        <input type="hidden" name="name" value="Book 2">
+                        <input type="hidden" name="name" value="Dracula">
                         <input type="hidden" name="price" value="24">
+                        <input type="hidden" name="PID" value="2">
                         <input type="submit" value="Add to cart">
                     </td>
                 </tr>
