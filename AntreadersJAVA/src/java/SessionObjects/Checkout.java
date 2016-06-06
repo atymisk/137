@@ -29,7 +29,14 @@ public class Checkout extends HttpServlet
         String name = request.getParameter("name");
         shoppingCart.deleteFromCart(name);
         session.setAttribute(session.getId(), shoppingCart);
-        viewCart(request, response, shoppingCart);
+        
+        if(!shoppingCart.getCartItems().isEmpty())
+        {viewCart(request, response, shoppingCart);}
+        else
+        {
+            RequestDispatcher r = request.getRequestDispatcher("ProductsPageServlet");
+            r.forward(request,response);
+        }
     }
     
     private void updateQTY(HttpServletRequest request, HttpServletResponse response, HttpSession session, Cart shoppingCart) 
@@ -44,7 +51,7 @@ public class Checkout extends HttpServlet
         {viewCart(request, response, shoppingCart);}
         else
         {
-            RequestDispatcher r = request.getRequestDispatcher("anthonyshtmltest.html");
+            RequestDispatcher r = request.getRequestDispatcher("ProductsPageServlet");
             r.forward(request,response);
         }
     }
@@ -66,7 +73,7 @@ public class Checkout extends HttpServlet
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Checkout</h1>");
-            out.println("<form action='anthonyshtmltest.html'><input type='submit' value='Continue browsing'></form>");
+            out.println("<form action='ProductsPageServlet'><input type='submit' value='Continue browsing'></form>");
             out.println("<hr>");
             out.println("<h1>Review Items</h1>");
             out.println("<table border='1px'>");

@@ -32,7 +32,8 @@ public class ShoppingCart extends HttpServlet
         
         shoppingCart.addToCart(PID, name, price, quantity);
         session.setAttribute(session.getId(), shoppingCart);
-        response.sendRedirect("anthonyshtmltest.html");
+        //response.sendRedirect("ProductsPageServlet");
+        viewCart(request,response, shoppingCart);
     }
     
     private void deleteItem(HttpServletRequest request, HttpServletResponse response, HttpSession session, Cart shoppingCart) 
@@ -83,11 +84,11 @@ public class ShoppingCart extends HttpServlet
             out.println("<body onload='checkCart()'>");
             out.println("<nav id='navbar'>");
             out.println("<a href='index.html' id='title'>Antreader Bookstore</a>\n" +
-                        "<a href='PHP/products.php' class='menu'>Products</a>\n" +
+                        "<a href='ProductPageServlet' class='menu'>Products</a>\n" +
                         "<a href='about.html' class='menu'>About</a></nav>");
             out.println("<h1>Shopping Cart</h1>");
             out.println("<hr>");
-            out.println("<form action='anthonyshtmltest.html'><input type='submit' value='Back to browsing'></form>");
+            out.println("<form action='ProductsPageServlet'><input type='submit' value='Back to browsing'></form>");
             out.println("<hr>");
             out.println("<h2>Shopping Cart</h2>");
             HashMap<String, CartItem> items = shoppingCart.getCartItems();
@@ -157,6 +158,7 @@ public class ShoppingCart extends HttpServlet
                 r.forward(request, response);
                 break;
             default:
+                viewCart(request, response, shoppingCart);
                 break;
         }
     }

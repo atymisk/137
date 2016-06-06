@@ -67,17 +67,17 @@ public class ProductDetails extends HttpServlet {
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<meta charset=\"utf-8\">");
-                out.println("<link rel=\"stylesheet\" type=\"text/css\" href='CSS/styleCSS.css'>");
+                out.println("<meta charset='utf-8'>");
+                out.println("<link rel='stylesheet' type='text/css' href='CSS/styleCSS.css'>");
                 out.println("<title>Servlet ConnectionServlet</title>");            
                 out.println("</head>");
                 out.println("<body>");
                 
                 
-                out.println("<nav id=\"navbar\">");
-                out.println("<a href=\"/AntreadersJAVA/index.html\" id=\"title\">Antreader Bookstore</a>");
-                out.println("<a href=\"/AntreadersJAVA/PHP/products.php\" class=\"menu\">Products</a>");
-                out.println("<a href=\"/AntreadersJAVA/about.html\" class=\"menu\">About</a>");
+                out.println("<nav id='navbar'>");
+                out.println("<a href='/AntreadersJAVA/index.html' id='title'>Antreader Bookstore</a>");
+                out.println("<a href='ProductsPageServlet' class='menu'>Products</a>");
+                out.println("<a href='/AntreadersJAVA/about.html' class='menu'>About</a>");
                 out.println("</nav>");
 
                 out.println("<h1 class='about'>Big Empty Files</h1><br>");
@@ -101,8 +101,17 @@ public class ProductDetails extends HttpServlet {
                     
                     //Add to Cart button
                     //TO DO: Add the correct link ****************************
-                    out.println("<A HREF=\"mycart?id=" + book_id + "\" style=\"position:relative;font-size:26px;height:40px;background-color:green;border-radius: 20px;margin-left:0px;margin-top:0px;\">" + "ADD TO CART" + "</A>");
-                                
+                    out.println("<form action='ShoppingCart' method='POST'>"
+                            + "<input type='hidden' name='command' value='add'>" 
+                            + "<input type='hidden' name='name' value='"+rs.getString("title")+"'>" 
+                            + "<input type='hidden' name='price' value='"+rs.getString("price")+"'>" 
+                            + "<input type='hidden' name='PID' value='"+rs.getInt("PID")+"'>"
+                            + "<input type='hidden' name='quantity' value='1'>" 
+                            + "<input type='submit' value='Add to Cart'></form><br>");
+                    
+                    out.println("<form action='ShoppingCart' method='POST'>"
+                            + "<input type='hidden' name='command' value='view'>"
+                            + "<input type='submit' value='View Cart'></form>");
                                 
                 }
                 if(getServletContext().getAttribute("access_count") == null) 
@@ -114,7 +123,8 @@ public class ProductDetails extends HttpServlet {
                 getServletContext().setAttribute("access_count", accessCount);
 
                 
-                out.println("</table>");
+                out.println("</table><br>");
+                out.println("");
                 
                 // out.println("Access Count:" + accessCount);
                 out.println("</body>");

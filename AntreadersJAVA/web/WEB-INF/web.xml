@@ -5,12 +5,12 @@
         <servlet-class>SessionObjects.ShoppingCart</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ProductsPageServlet</servlet-name>
-        <servlet-class>ProductsPage.ProductsPageServlet</servlet-class>
+        <servlet-name>Checkout</servlet-name>
+        <servlet-class>SessionObjects.Checkout</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ProductDetails</servlet-name>
-        <servlet-class>ProductsPage.ProductDetails</servlet-class>
+        <servlet-name>ProductsPageServlet</servlet-name>
+        <servlet-class>ProductsPage.ProductsPageServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProductDetails</servlet-name>
@@ -21,12 +21,12 @@
         <url-pattern>/ShoppingCart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ProductsPageServlet</servlet-name>
-        <url-pattern>/ProductsPageServlet</url-pattern>
+        <servlet-name>Checkout</servlet-name>
+        <url-pattern>/Checkout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ProductDetails</servlet-name>
-        <url-pattern>/ProductDetails</url-pattern>
+        <servlet-name>ProductsPageServlet</servlet-name>
+        <url-pattern>/ProductsPageServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProductDetails</servlet-name>
