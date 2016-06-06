@@ -64,6 +64,7 @@ public class ProductDetails extends HttpServlet {
                 stmt = con.createStatement();
                 rs = stmt.executeQuery(SQL);
                 
+                /*
                 int count = 0;
 
                 if(request.getAttribute(rs.getString("PID")) == null)
@@ -77,7 +78,7 @@ public class ProductDetails extends HttpServlet {
                     count++;
                     request.setAttribute(rs.getString("PID"), count);
                 }
-                
+                */
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
@@ -146,7 +147,7 @@ public class ProductDetails extends HttpServlet {
 
                 
                 out.println("</table><br>");
-                out.println("<p>"+ count +" customers are viewing this product!</p>");
+                out.println("<p>"+ 1 +" customers are viewing this product!</p>");
                 out.println("");
                 
                 // out.println("Access Count:" + accessCount);
@@ -163,16 +164,8 @@ public class ProductDetails extends HttpServlet {
             }
         }
     }
-    @Override
-    public void destroy()
-    {
-        String pid = (String) getServletContext().getAttribute("PID");
-        
-        int count = (Integer) getServletContext().getAttribute(pid);
-        getServletContext().setAttribute(pid, count++);
- 
-        super.destroy();
-    }
+    
+
 
    
     @Override
