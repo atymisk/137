@@ -6,7 +6,11 @@
     </servlet>
     <servlet>
         <servlet-name>ConnectionServlet</servlet-name>
-        <servlet-class>ProductsPage.ConnectionServlet</servlet-class>
+        <servlet-class>ProductsPage.ProductsPageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IndividualProductsServlet</servlet-name>
+        <servlet-class>IndividualProducts.IndividualProductsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ShoppingCart</servlet-name>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ConnectionServlet</servlet-name>
         <url-pattern>/ConnectionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndividualProductsServlet</servlet-name>
+        <url-pattern>/IndividualProductsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -14,7 +14,7 @@ import java.sql.*;
  *
  * @author Jessica Parhusip - ish
  */
-public class ConnectionServlet extends HttpServlet {
+public class ProductsPageServlet extends HttpServlet {
 
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
