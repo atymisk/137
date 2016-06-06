@@ -58,7 +58,7 @@ public class ProductDetails extends HttpServlet {
                 ResultSet rs;
                 //SQL query command
                 String book_id = request.getParameter("PID");
-                String SQL = "SELECT * from products where pid = '" + book_id + "'";
+                String SQL = "SELECT * from products where PID = '" + book_id + "'";
                 //String SQL = "SELECT * FROM products";
                 stmt = con.createStatement();
                 rs = stmt.executeQuery(SQL);
@@ -92,11 +92,11 @@ public class ProductDetails extends HttpServlet {
                     out.println("<h2 class='about'>Year Published</h2>");
                     out.println("<p class='about'>" + rs.getString("published_date") + "</p>");
                     out.println("<h2 class='about'>Genre</h2>");
-                    out.println("p class='about'>" + rs.getString("genre") + "</p>");
+                    out.println("<p class='about'>" + rs.getString("genre") + "</p>");
                     out.println("<h2 class='about'>Synopsis</h2>");
-                    out.println("p class='about'>" + rs.getString("synopsis") + "</p>");
+                    out.println("<p class='about'>" + rs.getString("synopsis") + "</p>");
                     out.println("<h2 class='about'>Price</h2>");
-                    out.println("p class='about'>" + rs.getString("price") + "</p>");
+                    out.println("<p class='about'>" + rs.getString("price") + "</p>");
                     
                     
                     //Add to Cart button
@@ -140,7 +140,7 @@ public class ProductDetails extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "This Servlet displays the products list";
+        return "This Servlet displays individual products";
     }
 
 }

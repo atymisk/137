@@ -99,7 +99,7 @@ public class ProductsPageServlet extends HttpServlet {
                 while (rs.next()) 
                 {
                     // '<tr style="cursor:pointer" onclick="document.location.href=\'/Antreaders/PHP/one_product.php?title='.$row['title'].'\';">';
-                    out.println("<tr style=\"cursor:pointer\" onclick=\"document.location.href='/Antreaders/PHP/one_product.php?title=" + rs.getString("title") + "';\">");
+                    out.println("<tr style=\"cursor:pointer\" onclick=\"document.location.href='ProductDetails?PID=" + rs.getInt("PID") + "';\">");
                     out.println("<td height=300 width=250 align=center class='product_info'> <img src='" + rs.getString("image_link") + "' alt='Picture will be coming soon' height=200 width=150></td>");
   
                     out.println("<td class=\"product_info\">" + rs.getString("author") + "</td>");
