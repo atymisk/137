@@ -5,7 +5,7 @@
         <servlet-class>SessionObjects.ShoppingCart</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ConnectionServlet</servlet-name>
+        <servlet-name>ProductsPageServlet</servlet-name>
         <servlet-class>ProductsPage.ProductsPageServlet</servlet-class>
     </servlet>
     <servlet>
@@ -17,8 +17,8 @@
         <url-pattern>/ShoppingCart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ConnectionServlet</servlet-name>
-        <url-pattern>/ConnectionServlet</url-pattern>
+        <servlet-name>ProductsPageServlet</servlet-name>
+        <url-pattern>/ProductsPageServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>IndividualProductsServlet</servlet-name>

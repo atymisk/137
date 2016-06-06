@@ -24,7 +24,7 @@ public class ProductsPageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConnectionTestServlet</title>");            
+            out.println("<title>Servlet ProductsPageServlet</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Something went wrong...</h1>");
@@ -70,7 +70,7 @@ public class ProductsPageServlet extends HttpServlet {
                 out.println("<head>");
                     out.println("<meta charset=\"utf-8\">");
                     out.println("<link rel=\"stylesheet\" type=\"text/css\" href='CSS/styleCSS.css'>");
-                    out.println("<title>Servlet ConnectionServlet</title>");            
+                    out.println("<title>Products Page</title>");            
                 out.println("</head>");
                 out.println("<body>");
                 
