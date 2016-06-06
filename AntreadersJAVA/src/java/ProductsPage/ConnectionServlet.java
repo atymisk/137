@@ -69,7 +69,7 @@ public class ConnectionServlet extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                     out.println("<meta charset=\"utf-8\">");
-                    out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"/CSS/styleCSS.css\">");
+                    out.println("<link rel=\"stylesheet\" type=\"text/css\" href='CSS/styleCSS.css'>");
                     out.println("<title>Servlet ConnectionServlet</title>");            
                 out.println("</head>");
                 out.println("<body>");
@@ -98,7 +98,8 @@ public class ConnectionServlet extends HttpServlet {
                 
                 while (rs.next()) 
                 {
-                    out.println("<tr style='cursor:pointer' onclick='document.location.href='/Antreaders/PHP/one_product.php?title='"+ rs.getString("title") +"';>");
+                    // '<tr style="cursor:pointer" onclick="document.location.href=\'/Antreaders/PHP/one_product.php?title='.$row['title'].'\';">';
+                    out.println("<tr style=\"cursor:pointer\" onclick=\"document.location.href='/Antreaders/PHP/one_product.php?title=" + rs.getString("title") + "';\">");
                     out.println("<td height=300 width=250 align=center class='product_info'> <img src='" + rs.getString("image_link") + "' alt='Picture will be coming soon' height=200 width=150></td>");
   
                     out.println("<td class=\"product_info\">" + rs.getString("author") + "</td>");
