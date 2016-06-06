@@ -63,27 +63,57 @@ public class ConnectionServlet extends HttpServlet {
                 String SQL = "SELECT * FROM products";
                 stmt = con.createStatement();
                 rs = stmt.executeQuery(SQL);
-
-
-                // Creating a response object only if the connection was establihsed
-                // successfully.
                 
-
+                
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>Servlet ConnectionServlet</title>");            
+                    out.println("<meta charset=\"utf-8\">");
+                    out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"/CSS/styleCSS.css\">");
+                    out.println("<title>Servlet ConnectionServlet</title>");            
                 out.println("</head>");
                 out.println("<body>");
-                out.println("<h1>Servlet JDBC connection established successfully.</h1>");
+                
+                // DEBUGGING
+                //out.println("<h1>Servlet JDBC connection established successfully.</h1>");
+                
+                out.println("<nav id=\"navbar\">");
+                    out.println("<a href=\"/AntreadersJAVA/index.html\" id=\"title\">Antreader Bookstore</a>");
+                    out.println("<a href=\"/AntreadersJAVA/PHP/products.php\" class=\"menu\">Products</a>");
+                out.println("<a href=\"/AntreadersJAVA/about.html\" class=\"menu\">About</a>");
+                out.println("</nav>");
+
+                out.println("<h1 id=\"products_title\">Products</h1>");
+                
+                
+                out.println("<table id=\"products\" align=\"center\">");
+                out.println("<tr>");
+                    out.println("<td class=\"product_info\">Image</td>");
+                    out.println("<td class=\"product_info\">Author(s)</td>");
+                    out.println("<td class=\"product_info\">Book Title</td>");
+                    out.println("<td class=\"product_info\">Genre</td>");
+                    out.println("<td class=\"product_info\">Year</td>");
+                    out.println("<td class=\"product_info\">Price</td>");
+                out.println("</tr>");
                 
                 while (rs.next()) 
                 {
                     out.println("<tr style='cursor:pointer' onclick='document.location.href='/Antreaders/PHP/one_product.php?title='"+ rs.getString("title") +"';>");
-                    out.println("<td height=300 width=250 align=center class='product_info'> <img src='" + rs.getString("imageLink") + "' alt='Picture will be coming soon' height=200 width=150></td>");
+                    out.println("<td height=300 width=250 align=center class='product_info'> <img src='" + rs.getString("image_link") + "' alt='Picture will be coming soon' height=200 width=150></td>");
+  
+                    out.println("<td class=\"product_info\">" + rs.getString("author") + "</td>");
+                    out.println("<td class=\"product_info\">");
+                    out.println("<a href=\"/AntreadersJAVA/PHP/one_product.php?title=" + rs.getString("title") + "\" class=\"product_info\">");
+                    out.println(rs.getString("title") + "</a></td>");
                     
-                    out.println(rs.getString("title") + " : " + rs.getString("author") + ":" + rs.getString("genre"));
-                    out.println("</br>");
+                    
+                    out.println("<td class=\"product_info\">" + rs.getString("genre") + "</td>");
+                    out.println("<td class=\"product_info\">"  + rs.getString("published_date") + "</td>");
+                    out.println("<td class=\"product_info\">$"  + rs.getString("price") + "</td></tr>");
+                    
+                    // PRELIMINARY
+                    //out.println(rs.getString("title") + " : " + rs.getString("author") + ":" + rs.getString("genre"));
+                    //out.println("</br>");
                 }
                 if(getServletContext().getAttribute("access_count") == null) 
                 {
@@ -93,7 +123,10 @@ public class ConnectionServlet extends HttpServlet {
                 accessCount++;
                 getServletContext().setAttribute("access_count", accessCount);
 
-                out.println("Access Count:" + accessCount);
+                
+                out.println("</table>");
+                
+                // out.println("Access Count:" + accessCount);
                 out.println("</body>");
                 out.println("</html>");
 
