@@ -40,6 +40,7 @@ public class ProductDetails extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
             try 
             {
+                
                 // Load the MYSQL JDBC driver.
                 Class.forName("com.mysql.jdbc.Driver");
 
@@ -63,6 +64,19 @@ public class ProductDetails extends HttpServlet {
                 stmt = con.createStatement();
                 rs = stmt.executeQuery(SQL);
                 
+                int count = 0;
+
+                if(request.getAttribute(rs.getString("PID")) == null)
+                {
+                    request.setAttribute("PID", rs.getString("PID"));
+                    request.setAttribute(rs.getString("PID"), 1);
+                }
+                else
+                {
+                    count = (Integer) request.getAttribute(rs.getString("PID"));
+                    count++;
+                    request.setAttribute(rs.getString("PID"), count);
+                }
                 
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
@@ -85,6 +99,8 @@ public class ProductDetails extends HttpServlet {
                 
                 while (rs.next()) 
                 {
+
+                  
                     out.println("<h1 class='about'>" + rs.getString("title") + " by " + rs.getString("author") + "</h1>");
                     
                     out.println("<img class='inlinepic' src='" + rs.getString("image_link") + "' alt='" + rs.getString("title") + " cover'/>");
@@ -114,20 +130,23 @@ public class ProductDetails extends HttpServlet {
                             + "<input type='submit' value='View Cart'></form>");
                                 
                 }
+                /*
                 int accessCount = (int) getServletContext().getAttribute("currentview");
                 if(getServletContext().getAttribute("currentview") == null) 
                 {
                     getServletContext().setAttribute("currentview", 1);
-                    accessCount = (int) getServletContext().getAttribute("currentview");
+                    //accessCount = (int) getServletContext().getAttribute("currentview");
                 }
                 else
                 {
                     accessCount++;
-                    getServletContext().setAttribute("currentview", accessCount);
+                    //getServletContext().setAttribute("currentview", accessCount);
                 }
+                */
+
                 
                 out.println("</table><br>");
-                out.println("<p>"+accessCount+" customers are viewing this product!</p>");
+                out.println("<p>"+ count +" customers are viewing this product!</p>");
                 out.println("");
                 
                 // out.println("Access Count:" + accessCount);
@@ -147,19 +166,11 @@ public class ProductDetails extends HttpServlet {
     @Override
     public void destroy()
     {
-        if(getServletContext().getAttribute("currentview") == null) 
-        {
-            getServletContext().setAttribute("currentview", 0);
-        }
-        else
-        {
-            int i = (int)getServletContext().getAttribute("currentview");
-            if(i!=0)
-            {
-                i--;
-                getServletContext().setAttribute("currentview", i);
-            }
-        }
+        String pid = (String) getServletContext().getAttribute("PID");
+        
+        int count = (Integer) getServletContext().getAttribute(pid);
+        getServletContext().setAttribute(pid, count++);
+ 
         super.destroy();
     }
 
